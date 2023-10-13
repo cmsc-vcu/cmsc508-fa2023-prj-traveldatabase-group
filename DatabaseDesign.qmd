@@ -1,1 +1,9 @@
+Problem Descripton
+
+Problem Domain - Billing and Payments, Package Tours, Reviews and Ratings. Implementing shopping cart functionality, handling payment gateways, managing vendor inventories, and providing customer support features.
+
+Need - To help tourist make better plans with low cost; to help them know what to expect, etc.
+
+Context - Tourists
+
 
