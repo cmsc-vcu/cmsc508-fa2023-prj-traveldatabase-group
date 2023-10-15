@@ -6,6 +6,86 @@ Need - To help tourist make better plans with low cost; to help them know what t
 
 Context - Tourists
 
+# User roles and use cases:
+## User Roles:
+
+1. Travelers:
+ * Needs:
+    * View and choose travel packages
+    * Make a payment for their trips
+    * Leave reviews for trips and hotels
+    * Update their personal details
+    * View their booking details and itinerary
+ * Use:
+    * A user-friendly interface to explore available travel packages
+    * Secure payment gateways
+    * Profile management options
+    * Feedback and review forms
+
+2. Travel Agents:
+ * Needs:
+    * Create and update travel packages
+    * View clients' details and their preferences
+    * Handle and manage bookings
+    * Contact travelers with details of their trips
+ * Use:
+    * A dashboard to manage and create travel packages
+    * Client management tools
+    * Reporting tools for sales, feedback, and client data
+
+3. Agency Admins/Managers:
+ * Needs:
+    * Oversee all the travel agents and their activities
+    * Financial overview (earnings, refunds, payments)
+    * Monitor and respond to client feedback
+    * Access to analytics and reports (sales, popular destinations, etc.)
+ * Use:
+    * An advanced dashboard with managerial tools
+    * Financial reporting tools
+    * Analytics and business insights
+
+## User Cases:
+
+1. Travelers:
+    * Browse through available travel packages
+    * Make online reservations and payments
+    * Access trip details and itineraries
+    * Provide feedback post-trip
+
+2. Travel Agents:
+    * Design and update travel packages
+    * Address specific requests of travelers
+    * View the traveler's history and preferences to offer personalized packages
+
+3. Agency Admins/Managers:
+    * Generate monthly/quarterly reports on sales and revenue
+    * Evaluate performance of travel agents
+    * Analyze feedback to enhance service quality
+
+## Connected & Integration:
+
+1. Website and Mobile App:
+    * The database will be the backend for the agency's website and mobile application. Travelers can view packages, make bookings, and provide feedback via these platforms
+
+2. Payment Gateways:
+    * The database will integrate with payment gateways to handle payments. The payment information (without sensitive data) will be stored in the database, linking to specific bookings and trips
+
+3. External Review Platforms:
+    * If the agency wants to showcase reviews from platforms like TripAdvisor, integration can be done. This will pull data into the agency's platform or push feedback from the agency's platform to the external site
+
+4. Email and Messaging Services:
+    * The system may connect to email platforms or messaging services to send automated confirmations, reminders, and promotional offers
+    
+# Security and Privacy:
+1. User Authentication:
+    * Concern: Unauthorized access can lead to data breaches, and fake accounts can spam with system
+
+2. Data Encryption:
+    * Concern: Data intercepted during transmission or directly from the database could be read and misused
+
+3. Access Controls:
+    * Concern: Users with excessive permissions could misuse data or functionalities, either accidentally or maliciously
+
 # Entity -relationship diagram (ERD)
 ### Conceptual design in Crows foot notation
 ::: {.column}
@@ -21,7 +101,9 @@ Destination ||--|{ Hotels: Have
 Traveler ||--|| Payment: Generate
 Agency ||--|{ Payment: Accepts
 Traveler }|--|{ Review: Give
-Review }|--|| Trip: Associate
+Review }|--|| Trip: Recive
+Review }|--|| Hotels: Recive
+
 
 Traveler{
     Primary TravelerID
@@ -97,6 +179,8 @@ Trip{
 
 Payment{
     Primary PaymentID
+    Foreign TravelerID
+    Foreign AgencyID
     float Amount
     string PaymentDate
     string PaymentMethod
@@ -104,10 +188,9 @@ Payment{
 
 Review{
     Primary ReviewID
-    int TravelerID
-    int TripID
-    int AgencyID
-    int HotelID
+    Foreign TravelerID
+    Foreign TripID
+    Foreign HotelID
     float Rating
     string FeedBack
 }
@@ -127,5 +210,5 @@ The following are the initial relation schemas for the system:
 * Travel( <ins>TravelID</ins>, Type, DepartureLocation, ArrivalLocation, DepartureDate, ArrivalDate, Cost, Provider )
 * Package( <ins>PackageID</ins>, PackageName, TotalCost, Duration, Description )
 * Trip( <ins>TripID</ins>, BookingDate, StartDate, EndDate )
-* Payement( <ins>PaymentID</ins>, Amount, PaymentDate, PaymentMethod )
-* Review( <ins>ReviewID</ins>, TravelerID, TripID, AgencyID, HotelID, Rating, FeedBack )
+* Payement( <ins>PaymentID</ins>, TravelerID(Foreign Key), AgencyID(Foreign Key), Amount, PaymentDate, PaymentMethod )
+* Review( <ins>ReviewID</ins>, TravelerID(Foreign Key), TripID(Foreign Key), HotelID(Foreign Key), Rating, FeedBack )
