@@ -212,3 +212,82 @@ The following are the initial relation schemas for the system:
 * Trip( <ins>TripID</ins>, BookingDate, StartDate, EndDate )
 * Payement( <ins>PaymentID</ins>, TravelerID(Foreign Key), AgencyID(Foreign Key), Amount, PaymentDate, PaymentMethod )
 * Review( <ins>ReviewID</ins>, TravelerID(Foreign Key), TripID(Foreign Key), HotelID(Foreign Key), Rating, FeedBack )
+
+# Sample Data
+## Traveler
+| TravelerID | FirstName | LastName | Email               | Phone     | DateOfBirth| Address                              | Budget |
+|------------|:---------:|:--------:|:-------------------:|:---------:|:----------:|:------------------------------------:|:------:|
+| 1          | John      | Doe      | john.doe@email.com  | 1234567890| 1990-05-15 | 321 SomeWhere Road, Tampa, FL, 33592 | 14790.5|
+| 2          | Jane      | Smith    | jane.smith@email.com| 0987654321| 1985-08-20 | 123 Another Ave, Chicago, IL, 60016  | 7420   |
+| 3          | Elzat     | Joe      | Elzat.joe@email.com | 4356792210| 2000-01-01 | 345 IDk St, Richmond, VA, 23220      | 9999   |
+
+## Agent
+| AgentID | FirstName | LastName | Email                 | Phone      | ExperienceYears | Specialization |
+|---------|:---------:|:--------:|:---------------------:|:----------:|:---------------:|:--------------:|
+| 45      | Robet     | Steward  | Robert.Stew@email.com | 3214562213 | 2               | European Tours |
+| 46      | James     | Brown    | James.Brown@email.com | 5612312312 | 7               | Asian Tours    |
+| 47      | Nijat     | Mahmud   | Nijat.Mahmud@email.com| 6753214431 | 10              | American Tours |
+
+## Agency
+| AgencyID | AgencyName | Location                                | ContactInfo | 
+|--------|:----------:|:---------------------------------------:|:-----------:|
+| 7      | SafeTrav   | 001 lmk google lane, LA, CA, 11220      | 8900204431  |
+| 23     | GoodLuck   | 010 IHateWrttingAddress Blvd, TX, 78902 | 8402703348  |
+| 156    | HaveFun    | 190 SomeOneHelpMe street, GA, 663220    | 6715541230  |
+
+## Destination
+
+| DestinationID | Name       | Country  | City   | Description                              | PopularAttractions                |
+|---------------|------------|----------|--------|------------------------------------------|-----------------------------------|
+| 1             | Paris      | France  | Paris  | The city of love.                        | Eiffel Tower, Louvre              |
+| 2             | Tokyo      | Japan   | Tokyo  | A technological hub.                     | Tokyo Tower, Senso-ji Temple      |
+| 3             | New York   | USA     | NY     | The city that never sleeps.              | Statue of Liberty, Central Park   |
+
+## Hotels
+
+| HotelID | Name            | Address                | CostPerNight | Amentities                           |
+|---------|-----------------|------------------------|--------------|--------------------------------------|
+| 1       | Parisian Palace | 123 Paris St.          | 150          | Free WiFi, Breakfast                 |
+| 2       | Tokyo Tower Inn | 456 Tokyo Lane         | 100          | Free WiFi, Gym Access                |
+| 3       | NY Central      | 789 New York Ave       | 200          | Pool, Breakfast, Free WiFi           |
+
+## Travel
+
+| TravelID | Type      | DepartureLocation | ArrivalLocation | DepartureDate | ArrivalDate | Cost | Provider         |
+|----------|-----------|-------------------|-----------------|---------------|-------------|------|------------------|
+| 1        | Flight    | New York          | Paris           | 2023-11-01    | 2023-11-02  | 300  | AirFrance        |
+| 2        | Flight    | Tokyo             | Paris           | 2023-12-01    | 2023-12-02  | 250  | JapanAirlines    |
+| 3        | Flight    | New York          | Tokyo           | 2023-12-10    | 2023-12-11  | 400  | AmericanAirlines |
+
+## Package
+
+| PackageID | PackageName     | TotalCost | Duration | Description                                  |
+|-----------|-----------------|-----------|----------|----------------------------------------------|
+| 1         | Paris Delight   | 500       | 7 days   | Explore the city of love in a week.          |
+| 2         | Tokyo Trip      | 450       | 5 days   | Dive deep into Tokyo's culture.              |
+| 3         | NY Adventure    | 600       | 6 days   | Discover the heart of the Big Apple.         |
+
+## Trip
+
+| TripID | BookingDate | StartDate  | EndDate    |
+|--------|-------------|------------|------------|
+| 1      | 2023-10-01  | 2023-11-01 | 2023-11-07 |
+| 2      | 2023-10-20  | 2023-12-01 | 2023-12-05 |
+| 3      | 2023-11-05  | 2023-12-10 | 2023-12-16 |
+
+## Payment
+
+| PaymentID | TravelerID | AgencyID | Amount | PaymentDate | PaymentMethod   |
+|-----------|------------|----------|--------|-------------|-----------------|
+| 1         | 1          | 1        | 500    | 2023-10-01  | Credit Card     |
+| 2         | 2          | 2        | 450    | 2023-10-20  | PayPal          |
+| 3         | 1          | 2        | 600    | 2023-11-05  | Debit Card      |
+
+## Review
+
+| ReviewID | TravelerID | TripID | HotelID | Rating | Feedback                                     |
+|----------|------------|--------|---------|--------|----------------------------------------------|
+| 1        | 1          | 1      | 1       | 4      | Great stay in Paris.                         |
+| 2        | 2          | 2      | 2       | 5      | Loved Tokyo! Would visit again!              |
+| 3        | 1          | 3      | 3       | 5      | NY Central was an amazing experience!        |
+
