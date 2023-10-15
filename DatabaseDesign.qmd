@@ -1,4 +1,4 @@
-Problem Descripton
+# Problem Descripton
 
 Problem Domain - Billing and Payments, Package Tours, Reviews and Ratings. Implementing shopping cart functionality, handling payment gateways, managing vendor inventories, and providing customer support features.
 
@@ -6,4 +6,126 @@ Need - To help tourist make better plans with low cost; to help them know what t
 
 Context - Tourists
 
+# Entity -relationship diagram (ERD)
+### Conceptual design in Crows foot notation
+::: {.column}
+```{mermaid}
+erDiagram
+Agency ||--|{ Agent : Work
+Agent ||--|{ Package : Design
+Package }|--|{ Destination: Consist
+Package }|--|{ Travel: Consist
+Trip }|--|| Package: Associate
+Trip }|--|| Traveler: Associate
+Destination ||--|{ Hotels: Have
+Traveler ||--|| Payment: Generate
+Agency ||--|{ Payment: Accepts
+Traveler }|--|{ Review: Give
+Review }|--|| Trip: Associate
 
+Traveler{
+    Primary TravelerID
+    string FirstName
+    string LastName
+    string DateOfBirth
+    string Email
+    int Phone
+    string Address
+    float Budget
+}
+
+Agent{
+    Primary AgentID
+    string FirstName
+    string LastName
+    string Email
+    int Phone
+    float ExperienceYears
+    string Specialization
+}
+
+Agency{
+    Primary AgencyID
+    stirng AgencyName
+    string Location
+    int ContactInfo
+}
+
+Destination{
+    Primary DestinationID
+    string Name
+    string Country
+    string City
+    string Description
+    string PopularAttractions
+    float AverageCost
+}
+
+Hotels{
+    Primary HotelID
+    string Name
+    string Address
+    float CostPerNight
+    string Amentities
+}
+
+Travel{
+    Primary TravelID
+    string Type
+    string DepartureLocation
+    string ArrivalLocation
+    string DepartureDate
+    string ArrivalDate
+    float Cost
+    string Provider
+}
+
+Package{
+    Primary PackageID
+    string PackageName
+    float TotalCost
+    int Duration
+    string Description
+}
+
+Trip{
+    Primary TripID
+    string BookingDate
+    string StartDate
+    string EndDate
+}
+
+Payment{
+    Primary PaymentID
+    float Amount
+    string PaymentDate
+    string PaymentMethod
+}
+
+Review{
+    Primary ReviewID
+    int TravelerID
+    int TripID
+    int AgencyID
+    int HotelID
+    float Rating
+    string FeedBack
+}
+```
+:::
+
+
+### Relation Schemas
+
+The following are the initial relation schemas for the system:
+
+* Traveler( <ins>TravelerID</ins>, FirstName, LastName, DateOfBirth, Email, Phone, Address, Budget )
+* Agent( <ins>AgentID</ins>, FirstName, LastName, Email, Phone, ExperienceYears, Specialization )
+* Agency( <ins>AgencyID</ins>, AgencyName, Location, ContactInfo )
+* Destination( <ins>DestinationID</ins>, Name, Country, City, Description, PopularAttractions )
+* Hotels( <ins>HotelID</ins>, Name, Address, CostPerNight, Amentities )
+* Travel( <ins>TravelID</ins>, Type, DepartureLocation, ArrivalLocation, DepartureDate, ArrivalDate, Cost, Provider )
+* Package( <ins>PackageID</ins>, PackageName, TotalCost, Duration, Description )
+* Trip( <ins>TripID</ins>, BookingDate, StartDate, EndDate )
+* Payement( <ins>PaymentID</ins>, Amount, PaymentDate, PaymentMethod )
+* Review( <ins>ReviewID</ins>, TravelerID, TripID, AgencyID, HotelID, Rating, FeedBack )
