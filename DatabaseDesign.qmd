@@ -291,3 +291,54 @@ The following are the initial relation schemas for the system:
 | 2        | 2          | 2      | 2       | 5      | Loved Tokyo! Would visit again!              |
 | 3        | 1          | 3      | 3       | 5      | NY Central was an amazing experience!        |
 
+8.
+User Information:
+
+User ID -> User Name, Email, Password
+Email -> User ID (assuming each email is unique)
+Destination Information:
+
+Destination ID -> Destination Name, Description, Travel Type
+Destination Name -> Destination ID (assuming each destination has a unique name)
+Hotel Information:
+
+Hotel ID -> Hotel Name, Location, Price, Rating
+Hotel Name -> Hotel ID (assuming each hotel has a unique name)
+Tour Package Information:
+
+Package ID -> Package Name, Description, Price
+Package Name -> Package ID (assuming each package has a unique name)
+User Choices:
+
+User ID, Destination ID, Hotel ID, Package ID -> Check-in Date, Check-out Date, Total Price
+User ID -> Destination ID, Hotel ID, Package ID (represents the choices made by the user)
+These functional dependencies ensure the integrity and consistency of the database and provide information on how various data elements are related. For example:
+
+User ID uniquely determines user-specific attributes such as the user's name and email.
+Destination ID is a unique identifier for destinations, and Destination Name is also unique, so you can determine the name of a destination based on its ID.
+Hotel ID uniquely identifies hotels, and Hotel Name is unique, so you can look up hotel details based on either the ID or the name.
+Package ID is unique, and Package Name is unique, allowing you to identify package details using either.
+User choices, which include user ID, destination ID, hotel ID, and package ID, determine related information such as check-in and check-out dates and total price.
+These functional dependencies play a crucial role in maintaining data consistency, preventing redundancy, and helping the database management system enforce referential integrity constraints. Additionally, these dependencies facilitate efficient querying and retrieval of information for travelers looking to make decisions about their destinations, hotels, and tour packages.
+
+9.
+What are the available destinations for travelers to choose from?
+Which hotels are available in a specific destination?
+What are the different types of tour packages offered?
+Can I see all the available hotels with their prices and ratings in a particular destination?
+Which tour packages include a visit to a specific tourist attraction?
+What is the total cost for a specific user's selected hotel and tour package?
+Which users have booked a particular hotel or tour package?
+What are the check-in and check-out dates for a user's booking?
+How many users have booked a specific hotel or tour package?
+What are the most popular destinations among travelers?
+Can I see a list of users who have selected a specific destination for their trip?
+What is the average price of hotels in a particular destination?
+What are the most affordable tour packages available?
+Which users have selected tour packages with a duration of more than one week?
+Can I get a list of users who have made bookings for a specific date range?
+What are the highest-rated hotels in a particular destination?
+Which users have the highest total spending on their bookings?
+How many bookings have been made for a specific hotel or tour package?
+What are the top three destinations for users traveling with children?
+Can I see the most expensive tour packages currently available?
