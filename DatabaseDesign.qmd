@@ -118,6 +118,7 @@ Traveler{
 
 Agent{
     Primary AgentID
+    Foregin AgencyID
     string FirstName
     string LastName
     string Email
@@ -164,6 +165,10 @@ Travel{
 
 Package{
     Primary PackageID
+    Foregin AgentID
+    Foregin TripID
+    Foregin DestinationID
+    Foregin TravelID
     string PackageName
     float TotalCost
     int Duration
@@ -172,6 +177,7 @@ Package{
 
 Trip{
     Primary TripID
+    Foreign PackageID
     string BookingDate
     string StartDate
     string EndDate
@@ -203,93 +209,122 @@ Review{
 The following are the initial relation schemas for the system:
 
 * Traveler( <ins>TravelerID</ins>, FirstName, LastName, DateOfBirth, Email, Phone, Address, Budget )
-* Agent( <ins>AgentID</ins>, FirstName, LastName, Email, Phone, ExperienceYears, Specialization )
+* Agent( <ins>AgentID</ins>, AgencyID(Foregin key), FirstName, LastName, Email, Phone, ExperienceYears, Specialization )
 * Agency( <ins>AgencyID</ins>, AgencyName, Location, ContactInfo )
 * Destination( <ins>DestinationID</ins>, Name, Country, City, Description, PopularAttractions )
 * Hotels( <ins>HotelID</ins>, Name, Address, CostPerNight, Amentities )
 * Travel( <ins>TravelID</ins>, Type, DepartureLocation, ArrivalLocation, DepartureDate, ArrivalDate, Cost, Provider )
-* Package( <ins>PackageID</ins>, PackageName, TotalCost, Duration, Description )
-* Trip( <ins>TripID</ins>, BookingDate, StartDate, EndDate )
+* Package( <ins>PackageID</ins>, AgentID(Foregin key), TripID(Foregin key), DestinationID(Foregin key), TravelID(Foregin key), PackageName, TotalCost, Duration, Description )
+* Trip( <ins>TripID</ins>, PackageID(Foregin key), BookingDate, StartDate, EndDate )
 * Payement( <ins>PaymentID</ins>, TravelerID(Foreign Key), AgencyID(Foreign Key), Amount, PaymentDate, PaymentMethod )
 * Review( <ins>ReviewID</ins>, TravelerID(Foreign Key), TripID(Foreign Key), HotelID(Foreign Key), Rating, FeedBack )
 
 # Sample Data
 ## Traveler
-| TravelerID | FirstName | LastName | Email               | Phone     | DateOfBirth| Address                              | Budget |
-|------------|:---------:|:--------:|:-------------------:|:---------:|:----------:|:------------------------------------:|:------:|
-| 1          | John      | Doe      | john.doe@email.com  | 1234567890| 1990-05-15 | 321 SomeWhere Road, Tampa, FL, 33592 | 14790.5|
-| 2          | Jane      | Smith    | jane.smith@email.com| 0987654321| 1985-08-20 | 123 Another Ave, Chicago, IL, 60016  | 7420   |
-| 3          | Elzat     | Joe      | Elzat.joe@email.com | 4356792210| 2000-01-01 | 345 IDk St, Richmond, VA, 23220      | 9999   |
+| TravelerID | FirstName | LastName | DateOfBirth |           Email           |    Phone    |        Address         | Budget |
+|------------|-----------|----------|-------------|---------------------------|-------------|------------------------|--------|
+|     1      |   John   |   Doe   | 1990-01-15  |      johndoe@email.com    | 123-456-7890| 123 Main St, City A    | 5000   |
+|     2      |   Jane   |  Smith  | 1985-05-20  |      janesmith@email.com  | 789-456-1230| 456 Elm St, City B     | 3000   |
+|     3      |   Alice  |  White  | 1995-02-25  |      alicewhite@email.com | 345-678-9012| 789 Pine St, City C    | 7000   |
+|     4      |   Bob    |  Brown  | 1988-10-10  |      bobbrown@email.com   | 567-890-1234| 101 Maple St, City D   | 2500   |
+|     5      |   Carol  |  Green  | 1992-08-15  |      carolgreen@email.com | 678-901-2345| 202 Oak St, City E     | 5500   |
+
 
 ## Agent
-| AgentID | FirstName | LastName | Email                 | Phone      | ExperienceYears | Specialization |
-|---------|:---------:|:--------:|:---------------------:|:----------:|:---------------:|:--------------:|
-| 45      | Robet     | Steward  | Robert.Stew@email.com | 3214562213 | 2               | European Tours |
-| 46      | James     | Brown    | James.Brown@email.com | 5612312312 | 7               | Asian Tours    |
-| 47      | Nijat     | Mahmud   | Nijat.Mahmud@email.com| 6753214431 | 10              | American Tours |
+| AgentID | AgencyID | FirstName | LastName |        Email        |    Phone    | ExperienceYears | Specialization |
+|---------|----------|-----------|----------|---------------------|-------------|-----------------|----------------|
+|    1    |    1     |   Mark   |   Twain  | mark@email.com      | 123-456-7890|       5         | Europe Tours   |
+|    2    |    1     |   Lucy   |  Austen  | lucy@email.com      | 456-789-0123|       3         | Asian Adventures |
+|    3    |    2     |   James  |  Joyce   | james@email.com     | 789-012-3456|       8         | African Safaris|
+|    4    |    3     |   Emily  |  Bronte  | emily@email.com     | 012-345-6789|       6         | American Expeditions |
+|    5    |    4     |   Oscar  |  Wilde   | oscar@email.com     | 234-567-8901|       4         | Oceanic Overtures |
+
 
 ## Agency
-| AgencyID | AgencyName | Location                                | ContactInfo | 
-|--------|:----------:|:---------------------------------------:|:-----------:|
-| 7      | SafeTrav   | 001 lmk google lane, LA, CA, 11220      | 8900204431  |
-| 23     | GoodLuck   | 010 IHateWrttingAddress Blvd, TX, 78902 | 8402703348  |
-| 156    | HaveFun    | 190 SomeOneHelpMe street, GA, 663220    | 6715541230  |
+| AgencyID |     AgencyName      | Location |      ContactInfo     |
+|----------|---------------------|----------|----------------------|
+|    1     | Globetrotter Agency | City A   | 123-456-7890         |
+|    2     | Wanderlust Travel   | City B   | contact@wanderlust.com |
+|    3     | World Explorer      | City C   | 345-678-9012         |
+|    4     | Adventure Journeys  | City D   | adventure@journeys.com |
+|    5     | Travel Bliss        | City E   | 567-890-1234         |
+
 
 ## Destination
+| DestinationID |   Name   | Country |  City   |           Description           |    PopularAttractions    |
+|---------------|----------|---------|---------|---------------------------------|--------------------------|
+|       1       | Eiffel   | France  | Paris   | Iconic tower in Paris           | Eiffel Tower             |
+|       2       | Pyramids | Egypt   | Giza    | Ancient wonders of the world    | Pyramids, Sphinx         |
+|       3       | Wall      | China      | Beijing  | Historic protective wall        | Great Wall               |
+|       4       | Colosseum | Italy      | Rome     | Ancient Roman amphitheater      | Colosseum                |
+|       5       | Taj Mahal | India      | Agra    | Iconic mausoleum                | Taj Mahal                |
 
-| DestinationID | Name       | Country  | City   | Description                              | PopularAttractions                |
-|---------------|------------|----------|--------|------------------------------------------|-----------------------------------|
-| 1             | Paris      | France  | Paris  | The city of love.                        | Eiffel Tower, Louvre              |
-| 2             | Tokyo      | Japan   | Tokyo  | A technological hub.                     | Tokyo Tower, Senso-ji Temple      |
-| 3             | New York   | USA     | NY     | The city that never sleeps.              | Statue of Liberty, Central Park   |
 
 ## Hotels
 
-| HotelID | Name            | Address                | CostPerNight | Amentities                           |
-|---------|-----------------|------------------------|--------------|--------------------------------------|
-| 1       | Parisian Palace | 123 Paris St.          | 150          | Free WiFi, Breakfast                 |
-| 2       | Tokyo Tower Inn | 456 Tokyo Lane         | 100          | Free WiFi, Gym Access                |
-| 3       | NY Central      | 789 New York Ave       | 200          | Pool, Breakfast, Free WiFi           |
+| HotelID |       Name       |          Address          | CostPerNight |          Amentities         |
+|---------|-------------------|--------------------------|--------------|-----------------------------|
+|    1    | Parisian Palace   | 123 Rue St, Paris         |     150      | Free Wi-Fi, Pool, Gym       |
+|    2    | Giza Grand        | 456 Nile Rd, Giza         |     100      | Breakfast, Gym, Free Parking|
+|    3    | Beijing Boutique | 789 Wall St, Beijing       |     120      | Wi-Fi, Pool, Breakfast      |
+|    4    | Roman Residency  | 101 Colosseum Rd, Rome     |     180      | Gym, Breakfast, Free Wi-Fi  |
+|    5    | Agra Attraction   | 202 Taj Way, Agra         |     140      | Pool, Free Wi-Fi, Breakfast |
+
 
 ## Travel
 
-| TravelID | Type      | DepartureLocation | ArrivalLocation | DepartureDate | ArrivalDate | Cost | Provider         |
-|----------|-----------|-------------------|-----------------|---------------|-------------|------|------------------|
-| 1        | Flight    | New York          | Paris           | 2023-11-01    | 2023-11-02  | 300  | AirFrance        |
-| 2        | Flight    | Tokyo             | Paris           | 2023-12-01    | 2023-12-02  | 250  | JapanAirlines    |
-| 3        | Flight    | New York          | Tokyo           | 2023-12-10    | 2023-12-11  | 400  | AmericanAirlines |
+| TravelID |  Type  | DepartureLocation | ArrivalLocation | DepartureDate | ArrivalDate | Cost |    Provider    |
+|----------|--------|-------------------|-----------------|---------------|-------------|------|----------------|
+|    1     | Flight | New York          | Paris           | 2023-11-10    | 2023-11-11  | 500  | AirTrans       |
+|    2     | Flight | Cairo             | Beijing         | 2023-12-05    | 2023-12-06  | 700  | GlobalAirways  |
+|    3     | Flight | Los Angeles       | Rome            | 2023-10-20    | 2023-10-21  | 600  | SkyTravel      |
+|    4     | Flight | Mumbai            | Agra            | 2023-09-25    | 2023-09-25  | 50   | QuickFlights   |
+|    5     | Train  | Beijing           | Shanghai        | 2023-11-05    | 2023-11-06  | 100  | ChinaRail      |
+
 
 ## Package
 
-| PackageID | PackageName     | TotalCost | Duration | Description                                  |
-|-----------|-----------------|-----------|----------|----------------------------------------------|
-| 1         | Paris Delight   | 500       | 7 days   | Explore the city of love in a week.          |
-| 2         | Tokyo Trip      | 450       | 5 days   | Dive deep into Tokyo's culture.              |
-| 3         | NY Adventure    | 600       | 6 days   | Discover the heart of the Big Apple.         |
+| PackageID | AgentID | TripID | DestinationID | TravelID |        PackageName         | TotalCost | Duration |           Description          |
+|-----------|---------|--------|---------------|----------|-----------------------------|-----------|----------|-------------------------------|
+|     1     |    1    |   1    |      1        |    1     | Paris in Autumn            |   2000    | 7 days   | Experience Paris in the fall  |
+|     2     |    2    |   2    |      2        |    2     | Giza to Beijing Adventure  |   2500    | 10 days  | From the pyramids to the wall |
+|     3     |    3    |   3    |      3        |    3     | Roman Holiday               |   2200    | 6 days   | Relive the classic in Rome    |
+|     4     |    4    |   4    |      4        |    4     | Agra Quick Escape           |   800     | 3 days   | Marvel at the Taj Mahal       |
+|     5     |    5    |   5    |      5        |    5     | Beijing Express             |   1500    | 4 days   | A whirlwind tour of Beijing   |
+
 
 ## Trip
 
-| TripID | BookingDate | StartDate  | EndDate    |
-|--------|-------------|------------|------------|
-| 1      | 2023-10-01  | 2023-11-01 | 2023-11-07 |
-| 2      | 2023-10-20  | 2023-12-01 | 2023-12-05 |
-| 3      | 2023-11-05  | 2023-12-10 | 2023-12-16 |
+| TripID | PackageID | BookingDate | StartDate  |  EndDate   |
+|--------|-----------|-------------|------------|------------|
+|   1    |     1     | 2023-10-01  | 2023-11-10 | 2023-11-17 |
+|   2    |     2     | 2023-09-20  | 2023-12-05 | 2023-12-15 |
+|   3    |     3     | 2023-09-05  | 2023-10-20 | 2023-10-26 |
+|   4    |     4     | 2023-09-01  | 2023-09-25 | 2023-09-28 |
+|   5    |     5     | 2023-10-10  | 2023-11-05 | 2023-11-09 |
+
 
 ## Payment
 
-| PaymentID | TravelerID | AgencyID | Amount | PaymentDate | PaymentMethod   |
-|-----------|------------|----------|--------|-------------|-----------------|
-| 1         | 1          | 1        | 500    | 2023-10-01  | Credit Card     |
-| 2         | 2          | 2        | 450    | 2023-10-20  | PayPal          |
-| 3         | 1          | 2        | 600    | 2023-11-05  | Debit Card      |
+| PaymentID | TravelerID | AgencyID | Amount | PaymentDate | PaymentMethod  |
+|-----------|------------|----------|--------|-------------|----------------|
+|     1     |     1      |    1     |  2000  | 2023-10-01  | Credit Card    |
+|     2     |     2      |    2     |  2500  | 2023-09-20  | PayPal         |
+|     3     |     3      |    3     |  2200  | 2023-09-05  | Debit Card     |
+|     4     |     4      |    4     |   800  | 2023-09-01  | Bank Transfer  |
+|     5     |     5      |    5     |  1500  | 2023-10-10  | Credit Card    |
+
 
 ## Review
 
-| ReviewID | TravelerID | TripID | HotelID | Rating | Feedback                                     |
-|----------|------------|--------|---------|--------|----------------------------------------------|
-| 1        | 1          | 1      | 1       | 4      | Great stay in Paris.                         |
-| 2        | 2          | 2      | 2       | 5      | Loved Tokyo! Would visit again!              |
-| 3        | 1          | 3      | 3       | 5      | NY Central was an amazing experience!        |
+| ReviewID | TravelerID | TripID | HotelID | Rating |               Feedback               |
+|----------|------------|--------|---------|--------|--------------------------------------|
+|    1     |     1      |   1    |    1    |   5    | Amazing trip! Loved the Eiffel!      |
+|    2     |     2      |   2    |    2    |   4    | Great journey, but long flights.     |
+|    3     |     3      |   3    |    3    |   5    | Rome is magnificent!                 |
+|    4     |     4      |   4    |    4    |   3    | Agra was good, hotel could be better |
+|    5     |     5      |   5    |    5    |   4    | Loved Beijing, hotel was decent.     |
+
 
 8.
 User Information:
