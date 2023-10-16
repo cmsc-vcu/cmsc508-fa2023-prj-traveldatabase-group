@@ -146,6 +146,7 @@ Destination{
 
 Hotels{
     Primary HotelID
+    Foregin DestinationID
     string Name
     string Address
     float CostPerNight
@@ -212,7 +213,7 @@ The following are the initial relation schemas for the system:
 * Agent( <ins>AgentID</ins>, AgencyID(Foregin key), FirstName, LastName, Email, Phone, ExperienceYears, Specialization )
 * Agency( <ins>AgencyID</ins>, AgencyName, Location, ContactInfo )
 * Destination( <ins>DestinationID</ins>, Name, Country, City, Description, PopularAttractions )
-* Hotels( <ins>HotelID</ins>, Name, Address, CostPerNight, Amentities )
+* Hotels( <ins>HotelID</ins>, DestinationID(Foregin key), Name, Address, CostPerNight, Amentities )
 * Travel( <ins>TravelID</ins>, Type, DepartureLocation, ArrivalLocation, DepartureDate, ArrivalDate, Cost, Provider )
 * Package( <ins>PackageID</ins>, AgentID(Foregin key), TripID(Foregin key), DestinationID(Foregin key), TravelID(Foregin key), PackageName, TotalCost, Duration, Description )
 * Trip( <ins>TripID</ins>, PackageID(Foregin key), BookingDate, StartDate, EndDate )
@@ -262,13 +263,13 @@ The following are the initial relation schemas for the system:
 
 ## Hotels
 
-| HotelID |       Name       |          Address          | CostPerNight |          Amentities         |
-|---------|-------------------|--------------------------|--------------|-----------------------------|
-|    1    | Parisian Palace   | 123 Rue St, Paris         |     150      | Free Wi-Fi, Pool, Gym       |
-|    2    | Giza Grand        | 456 Nile Rd, Giza         |     100      | Breakfast, Gym, Free Parking|
-|    3    | Beijing Boutique | 789 Wall St, Beijing       |     120      | Wi-Fi, Pool, Breakfast      |
-|    4    | Roman Residency  | 101 Colosseum Rd, Rome     |     180      | Gym, Breakfast, Free Wi-Fi  |
-|    5    | Agra Attraction   | 202 Taj Way, Agra         |     140      | Pool, Free Wi-Fi, Breakfast |
+| HotelID | DestinationID |       Name       |          Address          | CostPerNight |          Amentities         |
+|---------|---------------|------------------|--------------------------|--------------|-----------------------------|
+|    1    | 1             |Parisian Palace   | 123 Rue St, Paris         |     150      | Free Wi-Fi, Pool, Gym       |
+|    2    | 2             |Giza Grand        | 456 Nile Rd, Giza         |     100      | Breakfast, Gym, Free Parking|
+|    3    | 3             |Beijing Boutique | 789 Wall St, Beijing       |     120      | Wi-Fi, Pool, Breakfast      |
+|    4    | 4             |Roman Residency  | 101 Colosseum Rd, Rome     |     180      | Gym, Breakfast, Free Wi-Fi  |
+|    5    | 5             |Agra Attraction   | 202 Taj Way, Agra         |     140      | Pool, Free Wi-Fi, Breakfast |
 
 
 ## Travel
