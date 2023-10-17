@@ -327,8 +327,8 @@ The following are the initial relation schemas for the system:
 |    5     |     5      |   5    |    5    |   4    | Loved Beijing, hotel was decent.     |
 
 
-8.
-User Information:
+
+# User Information
 
 User ID -> User Name, Email, Password
 Email -> User ID (assuming each email is unique)
@@ -357,7 +357,8 @@ Package ID is unique, and Package Name is unique, allowing you to identify packa
 User choices, which include user ID, destination ID, hotel ID, and package ID, determine related information such as check-in and check-out dates and total price.
 These functional dependencies play a crucial role in maintaining data consistency, preventing redundancy, and helping the database management system enforce referential integrity constraints. Additionally, these dependencies facilitate efficient querying and retrieval of information for travelers looking to make decisions about their destinations, hotels, and tour packages.
 
-9.
+# Specific Queries
+
 What are the available destinations for travelers to choose from?
 Which hotels are available in a specific destination?
 What are the different types of tour packages offered?
@@ -379,6 +380,7 @@ How many bookings have been made for a specific hotel or tour package?
 What are the top three destinations for users traveling with children?
 Can I see the most expensive tour packages currently available?
 
+# Draft Project Schedule
 ```{mermaid}
 gantt
   dateFormat  2023-10-16
