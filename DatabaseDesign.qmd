@@ -387,6 +387,6 @@ gantt
     title       Travel Database
 
      Project Deliverables 5 :active, a, 2023-11-02, 2w
-     Project Deliverables 6: crit, b, 2017-07-23, 2w
-    Project Deliveables 7 :crit, c, after b a, 2w
+     Project Deliverables 6: crit, b, 2023-11-17, 2w
+    Project Deliveables 7 :crit, c, 2023-12-11, 2w
   ```
