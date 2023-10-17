@@ -381,13 +381,10 @@ Can I see the most expensive tour packages currently available?
 
 ```{mermaid}
 gantt
-  dateFormat  YYYY-MM-DD
-    title       Adding GANTT diagram functionality to mermaid
-    excludes    weekends
-    %% (`excludes` accepts specific dates in YYYY-MM-DD format, days of the week ("sunday") or "weekends", but not the word "weekdays".)
+  dateFormat  2023-10-16
+    title       Travel Database
 
-    apple :a, 2017-07-20, 1w
-    banana :crit, b, 2017-07-23, 1d
-    cherry :active, c, after b a, 1d
-    Add another diagram to demo page    :48h
+     Project Deliverables 5 :active, a, 2023-11-02, 2w
+     Project Deliverables 6: crit, b, 2017-07-23, 2w
+    Project Deliveables 7 :crit, c, after b a, 2w
   ```
