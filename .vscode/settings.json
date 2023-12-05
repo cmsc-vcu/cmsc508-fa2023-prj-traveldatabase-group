@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "sqltools.connections": [
         {
@@ -15,4 +16,22 @@
             "password": "Shout4_daniyaers_GOME"
         }
     ]
+=======
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "cmsc508.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "HR Database",
+            "database": "23FA_hr_strawbridgek",
+            "username": "23FA_strawbridgek"
+        }
+    ]
+>>>>>>> 585f5e3d01f30eb8b84b8b74be3a18d4f1ff7681
 }
