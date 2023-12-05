@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "cmsc508.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "users",
+            "database": "23FA_users_daniyaers",
+            "username": "23FA_daniyaers",
+            "password": "Shout4_daniyaers_GOME"
+        }
+    ]
+}
