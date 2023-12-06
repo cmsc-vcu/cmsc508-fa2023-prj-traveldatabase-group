@@ -13,6 +13,20 @@
             "database": "23FA_groups_group25",
             "username": "23FA_daniyaers",
             "password": "Shout4_daniyaers_GOME"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "cmsc508.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "Travel Database",
+            "database": "23FA_groups_group25",
+            "username": "23FA_strawbridgek",
+            "password": "Shout4_strawbridgek_GOME"
         }
     ]
 }
