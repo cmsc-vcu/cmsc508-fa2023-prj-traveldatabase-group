@@ -1,3 +1,5 @@
+# Project Description
+The Travel Database is a dynamic platform tailored for travel enthusiasts, providing a centralized hub for crucial information on destinations, hotels, and tour packages. With a focus on enhancing the tourist experience, the database covers key domains such as Billing and Payments, Package Tours, Reviews and Ratings, and Accommodation Management. Our mission is to empower users to plan cost-effective and memorable journeys, offering a user-friendly interface that caters to the needs of friends and family who share a love for exploration. Travel Database: Your passport to seamless and informed travel planning.
 
 # Problem Domain
 Billing and Payments, Package Tours, Reviews and Ratings. Implementing shopping cart functionality, handling payment gateways, managing vendor inventories, and providing customer support features.
