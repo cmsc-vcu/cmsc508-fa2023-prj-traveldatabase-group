@@ -48,11 +48,21 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="problem-descripton" class="level1">
-<h1>Problem Descripton</h1>
-<p>Problem Domain - Billing and Payments, Package Tours, Reviews and Ratings. Implementing shopping cart functionality, handling payment gateways, managing vendor inventories, and providing customer support features.</p>
-<p>Need - To help tourist make better plans with low cost; to help them know what to expect, etc.</p>
-<p>Context - Tourists</p>
+<section id="project-description" class="level1">
+<h1>Project Description</h1>
+<p>The Travel Database is a dynamic platform tailored for travel enthusiasts, providing a centralized hub for crucial information on destinations, hotels, and tour packages. With a focus on enhancing the tourist experience, the database covers key domains such as Billing and Payments, Package Tours, Reviews and Ratings, and Accommodation Management. Our mission is to empower users to plan cost-effective and memorable journeys, offering a user-friendly interface that caters to the needs of friends and family who share a love for exploration. Travel Database: Your passport to seamless and informed travel planning.</p>
+</section>
+<section id="problem-domain" class="level1">
+<h1>Problem Domain</h1>
+<p>Billing and Payments, Package Tours, Reviews and Ratings. Implementing shopping cart functionality, handling payment gateways, managing vendor inventories, and providing customer support features.</p>
+</section>
+<section id="need" class="level1">
+<h1>Need</h1>
+<p>To help tourist make better plans with low cost; to help them know what to expect, etc.</p>
+</section>
+<section id="context" class="level1">
+<h1>Context</h1>
+<p>Tourists</p>
 </section>
 <section id="user-roles-and-use-cases" class="level1">
 <h1>User roles and use cases:</h1>
@@ -322,8 +332,426 @@ Review{
 </ul>
 </section>
 </section>
+<section id="user-information" class="level1">
+<h1>User Information</h1>
+<p>User ID -&gt; User Name, Email, Password Email -&gt; User ID (assuming each email is unique) Destination Information:</p>
+<p>Destination ID -&gt; Destination Name, Description, Travel Type Destination Name -&gt; Destination ID (assuming each destination has a unique name) Hotel Information:</p>
+<p>Hotel ID -&gt; Hotel Name, Location, Price, Rating Hotel Name -&gt; Hotel ID (assuming each hotel has a unique name) Tour Package Information:</p>
+<p>Package ID -&gt; Package Name, Description, Price Package Name -&gt; Package ID (assuming each package has a unique name) User Choices:</p>
+<p>User ID, Destination ID, Hotel ID, Package ID -&gt; Check-in Date, Check-out Date, Total Price User ID -&gt; Destination ID, Hotel ID, Package ID (represents the choices made by the user) These functional dependencies ensure the integrity and consistency of the database and provide information on how various data elements are related. For example:</p>
+<p>User ID uniquely determines user-specific attributes such as the user’s name and email. Destination ID is a unique identifier for destinations, and Destination Name is also unique, so you can determine the name of a destination based on its ID. Hotel ID uniquely identifies hotels, and Hotel Name is unique, so you can look up hotel details based on either the ID or the name. Package ID is unique, and Package Name is unique, allowing you to identify package details using either. User choices, which include user ID, destination ID, hotel ID, and package ID, determine related information such as check-in and check-out dates and total price. These functional dependencies play a crucial role in maintaining data consistency, preventing redundancy, and helping the database management system enforce referential integrity constraints. Additionally, these dependencies facilitate efficient querying and retrieval of information for travelers looking to make decisions about their destinations, hotels, and tour packages.</p>
+</section>
+<section id="specific-queries" class="level1">
+<h1>Specific Queries</h1>
+<ul>
+<li>What are the available destinations for travelers to choose from?</li>
+<li>Which hotels are available in a specific destination?</li>
+<li>What are the different types of tour packages offered?</li>
+<li>Can I see all the available hotels with their prices and ratings in a particular destination?</li>
+<li>Which tour packages include a visit to a specific tourist attraction?</li>
+<li>What is the total cost for a specific user’s selected hotel and tour package?</li>
+<li>Which users have booked a particular hotel or tour package?</li>
+<li>What are the check-in and check-out dates for a user’s booking?</li>
+<li>How many users have booked a specific hotel or tour package?</li>
+<li>What are the most popular destinations among travelers?</li>
+<li>Can I see a list of users who have selected a specific destination for their trip?</li>
+<li>What is the average price of hotels in a particular destination?</li>
+<li>What are the most affordable tour packages available?</li>
+<li>Which users have selected tour packages with a duration of more than one week?</li>
+<li>Can I get a list of users who have made bookings for a specific date range?</li>
+<li>What are the highest-rated hotels in a particular destination?</li>
+<li>Which users have the highest total spending on their bookings?</li>
+<li>How many bookings have been made for a specific hotel or tour package?</li>
+<li>What are the top three destinations for users traveling with children?</li>
+<li>Can I see the most expensive tour packages currently available?</li>
+</ul>
+</section>
 <section id="sample-data" class="level1">
 <h1>Sample Data</h1>
+</section>
+<section id="billing-and-payments" class="level1">
+<h1>Billing and Payments</h1>
+<table class="table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 23%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Transaction_ID</th>
+<th>Tourist_ID</th>
+<th>Amount</th>
+<th>Payment_Status</th>
+<th>Payment_Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>101</td>
+<td>$500.00</td>
+<td>Paid</td>
+<td>Credit Card</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>102</td>
+<td>$700.00</td>
+<td>Paid</td>
+<td>PayPal</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>103</td>
+<td>$450.00</td>
+<td>Pending</td>
+<td>Bank Transfer</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>104</td>
+<td>$600.00</td>
+<td>Paid</td>
+<td>Debit Card</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>105</td>
+<td>$850.00</td>
+<td>Paid</td>
+<td>Cash</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>106</td>
+<td>$550.00</td>
+<td>Pending</td>
+<td>Credit Card</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>107</td>
+<td>$750.00</td>
+<td>Paid</td>
+<td>PayPal</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>108</td>
+<td>$400.00</td>
+<td>Pending</td>
+<td>Bank Transfer</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>109</td>
+<td>$680.00</td>
+<td>Paid</td>
+<td>Debit Card</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>110</td>
+<td>$900.00</td>
+<td>Paid</td>
+<td>Credit Card</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="package-tours" class="level1">
+<h1>Package Tours</h1>
+<table class="table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 23%">
+<col style="width: 22%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tour_ID</th>
+<th>Tour_Name</th>
+<th>Destination</th>
+<th>Start_Date</th>
+<th>End_Date</th>
+<th>Cost_Per_Person</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Adventure Trek</td>
+<td>Himalayas</td>
+<td>2023-05-15</td>
+<td>2023-05-22</td>
+<td>$800.00</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Cultural Heritage</td>
+<td>Rome, Italy</td>
+<td>2023-06-10</td>
+<td>2023-06-18</td>
+<td>$1200.00</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Beach Paradise</td>
+<td>Bali, Indonesia</td>
+<td>2023-07-05</td>
+<td>2023-07-12</td>
+<td>$1000.00</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>City Explorer</td>
+<td>New York, USA</td>
+<td>2023-08-20</td>
+<td>2023-08-27</td>
+<td>$1500.00</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Wildlife Safari</td>
+<td>Serengeti, Africa</td>
+<td>2023-09-15</td>
+<td>2023-09-22</td>
+<td>$1300.00</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Alpine Retreat</td>
+<td>Swiss Alps</td>
+<td>2023-10-10</td>
+<td>2023-10-18</td>
+<td>$1100.00</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Tropical Getaway</td>
+<td>Maldives</td>
+<td>2023-11-05</td>
+<td>2023-11-12</td>
+<td>$1800.00</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Historic City Tour</td>
+<td>Athens, Greece</td>
+<td>2023-12-01</td>
+<td>2023-12-09</td>
+<td>$1400.00</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Desert Adventure</td>
+<td>Dubai, UAE</td>
+<td>2024-01-15</td>
+<td>2024-01-22</td>
+<td>$1600.00</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Island Hopping</td>
+<td>Phuket, Thailand</td>
+<td>2024-02-10</td>
+<td>2024-02-18</td>
+<td>$900.00</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reviews-and-ratings" class="level1">
+<h1>Reviews and Ratings</h1>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Review_ID</th>
+<th>Tour_ID</th>
+<th>Tourist_ID</th>
+<th>Rating (1-5)</th>
+<th>Review_Text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>101</td>
+<td>4</td>
+<td>Enjoyed the trek, stunning views!</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2</td>
+<td>102</td>
+<td>5</td>
+<td>Fascinating history, excellent tour guide!</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>3</td>
+<td>103</td>
+<td>3</td>
+<td>Beautiful beaches, but hotel service could improve</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>4</td>
+<td>104</td>
+<td>4</td>
+<td>Loved exploring the city, great food recommendations</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>5</td>
+<td>105</td>
+<td>5</td>
+<td>Amazing wildlife experience, knowledgeable guides</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>6</td>
+<td>106</td>
+<td>4</td>
+<td>Serene mountain retreat, cozy accommodations</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>7</td>
+<td>107</td>
+<td>2</td>
+<td>Disappointing stay, cleanliness issues</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>8</td>
+<td>108</td>
+<td>5</td>
+<td>Rich history, friendly locals</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>9</td>
+<td>109</td>
+<td>4</td>
+<td>Thrilling desert adventure, great cultural insights</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>10</td>
+<td>110</td>
+<td>3</td>
+<td>Beautiful islands, but crowded during peak season</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="accommodation-management" class="level1">
+<h1>Accommodation Management</h1>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 30%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Hotel_ID</th>
+<th>Hotel_Name</th>
+<th>Destination</th>
+<th>Cost_Per_Night</th>
+<th>Rating (1-5)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>101</td>
+<td>Mountain View Lodge</td>
+<td>Himalayas</td>
+<td>$100.00</td>
+<td>4.5</td>
+</tr>
+<tr class="even">
+<td>102</td>
+<td>Roma Historical Hotel</td>
+<td>Rome, Italy</td>
+<td>$150.00</td>
+<td>4.8</td>
+</tr>
+<tr class="odd">
+<td>103</td>
+<td>Bali Beach Resort</td>
+<td>Bali, Indonesia</td>
+<td>$120.00</td>
+<td>3.9</td>
+</tr>
+<tr class="even">
+<td>104</td>
+<td>Urban Escape Hotel</td>
+<td>New York, USA</td>
+<td>$200.00</td>
+<td>4.2</td>
+</tr>
+<tr class="odd">
+<td>105</td>
+<td>Safari Camp Retreat</td>
+<td>Serengeti, Africa</td>
+<td>$180.00</td>
+<td>4.7</td>
+</tr>
+<tr class="even">
+<td>106</td>
+<td>Alpine Chalet</td>
+<td>Swiss Alps</td>
+<td>$130.00</td>
+<td>4.6</td>
+</tr>
+<tr class="odd">
+<td>107</td>
+<td>Maldives Paradise</td>
+<td>Maldives</td>
+<td>$300.00</td>
+<td>4.9</td>
+</tr>
+<tr class="even">
+<td>108</td>
+<td>Acropolis View Hotel</td>
+<td>Athens, Greece</td>
+<td>$160.00</td>
+<td>4.4</td>
+</tr>
+<tr class="odd">
+<td>109</td>
+<td>Desert Oasis Resort</td>
+<td>Dubai, UAE</td>
+<td>$220.00</td>
+<td>4.3</td>
+</tr>
+<tr class="even">
+<td>110</td>
+<td>Phuket Beachfront</td>
+<td>Phuket, Thailand</td>
+<td>$90.00</td>
+<td>4.0</td>
+</tr>
+</tbody>
+</table>
 <section id="traveler" class="level2">
 <h2 class="anchored" data-anchor-id="traveler">Traveler</h2>
 <table class="table">
@@ -1004,19 +1432,6 @@ Review{
 </table>
 </section>
 </section>
-<section id="user-information" class="level1">
-<h1>User Information</h1>
-<p>User ID -&gt; User Name, Email, Password Email -&gt; User ID (assuming each email is unique) Destination Information:</p>
-<p>Destination ID -&gt; Destination Name, Description, Travel Type Destination Name -&gt; Destination ID (assuming each destination has a unique name) Hotel Information:</p>
-<p>Hotel ID -&gt; Hotel Name, Location, Price, Rating Hotel Name -&gt; Hotel ID (assuming each hotel has a unique name) Tour Package Information:</p>
-<p>Package ID -&gt; Package Name, Description, Price Package Name -&gt; Package ID (assuming each package has a unique name) User Choices:</p>
-<p>User ID, Destination ID, Hotel ID, Package ID -&gt; Check-in Date, Check-out Date, Total Price User ID -&gt; Destination ID, Hotel ID, Package ID (represents the choices made by the user) These functional dependencies ensure the integrity and consistency of the database and provide information on how various data elements are related. For example:</p>
-<p>User ID uniquely determines user-specific attributes such as the user’s name and email. Destination ID is a unique identifier for destinations, and Destination Name is also unique, so you can determine the name of a destination based on its ID. Hotel ID uniquely identifies hotels, and Hotel Name is unique, so you can look up hotel details based on either the ID or the name. Package ID is unique, and Package Name is unique, allowing you to identify package details using either. User choices, which include user ID, destination ID, hotel ID, and package ID, determine related information such as check-in and check-out dates and total price. These functional dependencies play a crucial role in maintaining data consistency, preventing redundancy, and helping the database management system enforce referential integrity constraints. Additionally, these dependencies facilitate efficient querying and retrieval of information for travelers looking to make decisions about their destinations, hotels, and tour packages.</p>
-</section>
-<section id="specific-queries" class="level1">
-<h1>Specific Queries</h1>
-<p>What are the available destinations for travelers to choose from? Which hotels are available in a specific destination? What are the different types of tour packages offered? Can I see all the available hotels with their prices and ratings in a particular destination? Which tour packages include a visit to a specific tourist attraction? What is the total cost for a specific user’s selected hotel and tour package? Which users have booked a particular hotel or tour package? What are the check-in and check-out dates for a user’s booking? How many users have booked a specific hotel or tour package? What are the most popular destinations among travelers? Can I see a list of users who have selected a specific destination for their trip? What is the average price of hotels in a particular destination? What are the most affordable tour packages available? Which users have selected tour packages with a duration of more than one week? Can I get a list of users who have made bookings for a specific date range? What are the highest-rated hotels in a particular destination? Which users have the highest total spending on their bookings? How many bookings have been made for a specific hotel or tour package? What are the top three destinations for users traveling with children? Can I see the most expensive tour packages currently available?</p>
-</section>
 <section id="draft-project-schedule" class="level1">
 <h1>Draft Project Schedule</h1>
 <div class="cell">
@@ -1024,12 +1439,12 @@ Review{
 <div>
 <div>
 <pre class="mermaid mermaid-js">gantt
-  dateFormat  2023-10-16
+  dateFormat  YYYY-MM-DD
     title       Travel Database
 
-     Project Deliverables 5 :active, a, 2023-11-02, 2w
-     Project Deliverables 6: crit, b, 2023-11-17, 2w
-    Project Deliveables 7 :crit, c, 2023-12-11, 2w
+     Project Deliverables 5 :active, a, 2023-10-16, 2w
+     Project Deliverables 6: crit, b, 2023-11-02, 2w
+    Project Deliveables 7 :crit, c, 2023-11-17, 2w
 </pre>
 </div>
 </div>
