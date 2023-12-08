@@ -7,9 +7,9 @@ DROP TABLE IF EXISTS Traveler;
 DROP TABLE IF EXISTS Destination;
 DROP TABLE IF EXISTS Travel;
 DROP TABLE IF EXISTS Payment;
-DROP TABLE IF EXISTS Reviews;
-DROP TABLE IF EXISTS Hotels;
-DROP TABLE IF EXISTS Transactions;
+DROP TABLE IF EXISTS Review;
+DROP TABLE IF EXISTS Hotel;
+DROP TABLE IF EXISTS Transaction;
 
 SET FOREIGN_KEY_CHECKS=1;
 
@@ -208,7 +208,7 @@ VALUES
 (10, 1900.00, '2023-05-25', 'PayPal');
 
 
-CREATE TABLE Transactions (
+CREATE TABLE Transaction (
     Transaction_ID INT PRIMARY KEY,
     Traveler_ID INT,
     Amount DECIMAL(10, 2),
@@ -216,7 +216,7 @@ CREATE TABLE Transactions (
     Payment_Method VARCHAR(20)
 );
 
-INSERT INTO Transactions (Transaction_ID, Traveler_ID, Amount, Payment_Status, Payment_Method)
+INSERT INTO Transaction (Transaction_ID, Traveler_ID, Amount, Payment_Status, Payment_Method)
 VALUES 
     (1, 101, 500.00, 'Paid', 'Credit Card'),
     (2, 102, 700.00, 'Paid', 'PayPal'),
@@ -230,16 +230,16 @@ VALUES
     (10, 110, 900.00, 'Paid', 'Credit Card');
 
 
-CREATE TABLE Reviews (
+CREATE TABLE Review (
     Review_ID INT PRIMARY KEY,
-    Tour_ID INT,
-    Tourist_ID INT,
+    Travel_ID INT,
+    Traveler_ID INT,
     Rating INT CHECK (Rating BETWEEN 1 AND 5),
     Review_Text TEXT
 );
 
 
-INSERT INTO Reviews (Review_ID, Tour_ID, Tourist_ID, Rating, Review_Text)
+INSERT INTO Review (Review_ID, Travel_ID, Traveler_ID, Rating, Review_Text)
 VALUES 
     (1, 1, 101, 4, 'Enjoyed the trek, stunning views!'),
     (2, 2, 102, 5, 'Fascinating history, excellent tour guide!'),
@@ -253,7 +253,7 @@ VALUES
     (10, 10, 110, 3, 'Beautiful islands, but crowded during peak season');
 
 
-CREATE TABLE Hotels (
+CREATE TABLE Hotel (
     Hotel_ID INT PRIMARY KEY,
     Hotel_Name VARCHAR(50),
     Destination VARCHAR(50),
@@ -261,7 +261,7 @@ CREATE TABLE Hotels (
     Rating DECIMAL(2, 1) CHECK (Rating BETWEEN 1.0 AND 5.0)
 );
 
-INSERT INTO Hotels (Hotel_ID, Hotel_Name, Destination, Cost_Per_Night, Rating)
+INSERT INTO Hotel (Hotel_ID, Hotel_Name, Destination, Cost_Per_Night, Rating)
 VALUES 
     (101, 'Mountain View Lodge', 'Himalayas', 100.00, 4.5),
     (102, 'Roma Historical Hotel', 'Rome, Italy', 150.00, 4.8),

@@ -1,0 +1,957 @@
+---
+title: Deliverable 7
+author: Saifuding Daniyaer, Kaela Strawbridge
+date: last-modified
+format:
+    html:
+        theme: cosmo
+        toc: true
+        embed-resources: true
+        code-copy: true
+---
+GITHUB URL: https://github.com/cmsc-vcu/cmsc508-fa2023-prj-traveldatabase-group
+
+# Project Description
+The Travel Database is a dynamic platform tailored for travel enthusiasts, providing a centralized hub for crucial information on destinations, hotels, and tour packages. With a focus on enhancing the tourist experience, the database covers key domains such as Billing and Payments, Package Tours, Reviews and Ratings, and Accommodation Management. Our mission is to empower users to plan cost-effective and memorable journeys, offering a user-friendly interface that caters to the needs of friends and family who share a love for exploration. Travel Database: Your passport to seamless and informed travel planning.
+
+# Problem Domain
+Billing and Payments, Package Tours, Reviews and Ratings. Implementing shopping cart functionality, handling payment gateways, managing vendor inventories, and providing customer support features.
+
+# Need
+To help tourist make better plans with low cost; to help them know what to expect, etc.
+
+# Context
+Tourists
+
+# User roles and use cases:
+## User Roles:
+
+1. Travelers:
+ * Needs:
+    * View and choose travel packages
+    * Make a payment for their trips
+    * Leave reviews for trips and hotels
+    * Update their personal details
+    * View their booking details and itinerary
+ * Use:
+    * A user-friendly interface to explore available travel packages
+    * Secure payment gateways
+    * Profile management options
+    * Feedback and review forms
+
+2. Travel Agents:
+ * Needs:
+    * Create and update travel packages
+    * View clients' details and their preferences
+    * Handle and manage bookings
+    * Contact travelers with details of their trips
+ * Use:
+    * A dashboard to manage and create travel packages
+    * Client management tools
+    * Reporting tools for sales, feedback, and client data
+
+3. Agency Admins/Managers:
+ * Needs:
+    * Oversee all the travel agents and their activities
+    * Financial overview (earnings, refunds, payments)
+    * Monitor and respond to client feedback
+    * Access to analytics and reports (sales, popular destinations, etc.)
+ * Use:
+    * An advanced dashboard with managerial tools
+    * Financial reporting tools
+    * Analytics and business insights
+
+## User Cases:
+
+1. Travelers:
+    * Browse through available travel packages
+    * Make online reservations and payments
+    * Access trip details and itineraries
+    * Provide feedback post-trip
+
+2. Travel Agents:
+    * Design and update travel packages
+    * Address specific requests of travelers
+    * View the traveler's history and preferences to offer personalized packages
+
+3. Agency Admins/Managers:
+    * Generate monthly/quarterly reports on sales and revenue
+    * Evaluate performance of travel agents
+    * Analyze feedback to enhance service quality
+
+## Connected & Integration:
+
+1. Website and Mobile App:
+    * The database will be the backend for the agency's website and mobile application. Travelers can view packages, make bookings, and provide feedback via these platforms
+
+2. Payment Gateways:
+    * The database will integrate with payment gateways to handle payments. The payment information (without sensitive data) will be stored in the database, linking to specific bookings and trips
+
+3. External Review Platforms:
+    * If the agency wants to showcase reviews from platforms like TripAdvisor, integration can be done. This will pull data into the agency's platform or push feedback from the agency's platform to the external site
+
+4. Email and Messaging Services:
+    * The system may connect to email platforms or messaging services to send automated confirmations, reminders, and promotional offers
+    
+# Security and Privacy:
+1. User Authentication:
+    * Concern: Unauthorized access can lead to data breaches, and fake accounts can spam with system
+
+2. Data Encryption:
+    * Concern: Data intercepted during transmission or directly from the database could be read and misused
+
+3. Access Controls:
+    * Concern: Users with excessive permissions could misuse data or functionalities, either accidentally or maliciously
+
+# Entity -relationship diagram (ERD)
+### Conceptual design in Crows foot notation
+::: {.column}
+```{mermaid}
+erDiagram
+Agency ||--|{ Agent : Work
+Agent ||--|{ Package : Design
+Package }|--|{ Destination: Consist
+Package }|--|{ Travel: Consist
+Trip }|--|| Package: Associate
+Trip }|--|| Traveler: Associate
+Destination ||--|{ Hotel: Have
+Traveler ||--|{ Transaction: Generate
+Payment ||--|| Transaction: Associate
+Traveler }|--|{ Review: Give
+Review }|--|| Trip: Recive
+Review }|--|| Hotel: Recive
+
+
+Traveler{
+    Primary Traveler_ID
+    string Traveler_first_name
+    string Traveler_last_name
+    string DateOfBirth
+    string Email
+    int Phone
+    string Address
+    float Budget
+}
+
+Agent{
+    Primary Agent_ID
+    string FirstName
+    string LastName
+    string Email
+    string Phone
+    float ExperienceYears
+    string Specialization
+}
+
+Agency{
+    Primary Agency_ID
+    stirng AgencyName
+    string Location
+    string ContactInfo
+}
+
+Destination{
+    Primary Destination_ID
+    string Name
+    string Country
+    string City
+    string Description
+    string PopularAttractions
+    float AverageCost
+}
+
+Hotel{
+    Primary Hotel_ID
+    string Destination
+    string Name
+    float CostPerNight
+    float Rating    
+}
+
+Travel{
+    Primary Travel_ID
+    string method
+    string DepartureLocation
+    string ArrivalLocation
+    string DepartureDate
+    string ArrivalDate
+    float Cost
+    string Provider
+}
+
+Package{
+    Primary Package_ID
+    string PackageName
+    float TotalCost
+    int Duration
+    string Description
+}
+
+Trip{
+    Primary Trip_ID
+    string BookingDate
+    string StartDate
+    string EndDate
+}
+
+Payment{
+    Primary Payment_ID
+    float Amount
+    string PaymentDate
+    string PaymentMethod
+}
+
+Review{
+    Primary Review_ID
+    Foreign Travel_ID
+    Foreign Traveler_ID
+    float Rating
+    string Review_Text
+}
+
+Transaction{
+    Primary Transaction_ID
+    Foreign Traveler_ID
+    float Amount
+    string Payment_Status
+    stirng Payment_Method
+}
+```
+:::
+
+
+### Relation Schemas
+
+The following are the initial relation schemas for the system:
+
+* Traveler( <ins>Traveler_ID</ins>, Traveler_first_name, Traveler_last_name, DateOfBirth, Email, Phone, Address, Budget )
+* Agent( <ins>Agent_ID</ins>, FirstName, LastName, Email, Phone, ExperienceYears, Specialization )
+* Agency( <ins>Agency_ID</ins>, AgencyName, Location, ContactInfo )
+* Destination( <ins>Destination_ID</ins>, Name, Country, City, Description, PopularAttractions, AverageCost )
+* Hotel( <ins>Hotel_ID</ins>, Destination_ID (Foreign key), Name, CostPerNight, Rating )
+* Travel( <ins>Travel_ID</ins>, method, DepartureLocation, ArrivalLocation, DepartureDate, ArrivalDate, Cost, Provider )
+* Package( <ins>Package_ID</ins>, Agent_ID (Foreign key), Destination_ID (Foreign key), PackageName, TotalCost, Duration, Description )
+* Trip( <ins>Trip_ID</ins>, Package_ID (Foreign key), BookingDate, StartDate, EndDate )
+* Payment( <ins>Payment_ID</ins>, Traveler_ID (Foreign key), Amount, PaymentDate, PaymentMethod )
+* Review( <ins>Review_ID</ins>, Travel_ID (Foreign key), Traveler_ID (Foreign key), Rating, Review_Text )
+* Transaction( <ins>Transaction_ID</ins>, Traveler_ID (Foreign key), Amount, Payment_Status, Payment_Method )
+
+# User Information
+
+User ID -> User Name, Email, Password
+Email -> User ID (assuming each email is unique)
+Destination Information:
+
+Destination ID -> Destination Name, Description, Travel Type
+Destination Name -> Destination ID (assuming each destination has a unique name)
+Hotel Information:
+
+Hotel ID -> Hotel Name, Location, Price, Rating
+Hotel Name -> Hotel ID (assuming each hotel has a unique name)
+Tour Package Information:
+
+Package ID -> Package Name, Description, Price
+Package Name -> Package ID (assuming each package has a unique name)
+User Choices:
+
+User ID, Destination ID, Hotel ID, Package ID -> Check-in Date, Check-out Date, Total Price
+User ID -> Destination ID, Hotel ID, Package ID (represents the choices made by the user)
+These functional dependencies ensure the integrity and consistency of the database and provide information on how various data elements are related. For example:
+
+User ID uniquely determines user-specific attributes such as the user's name and email.
+Destination ID is a unique identifier for destinations, and Destination Name is also unique, so you can determine the name of a destination based on its ID.
+Hotel ID uniquely identifies hotels, and Hotel Name is unique, so you can look up hotel details based on either the ID or the name.
+Package ID is unique, and Package Name is unique, allowing you to identify package details using either.
+User choices, which include user ID, destination ID, hotel ID, and package ID, determine related information such as check-in and check-out dates and total price.
+These functional dependencies play a crucial role in maintaining data consistency, preventing redundancy, and helping the database management system enforce referential integrity constraints. Additionally, these dependencies facilitate efficient querying and retrieval of information for travelers looking to make decisions about their destinations, hotels, and tour packages.
+
+# Sample Data
+
+# Agency
+
+| AgencyID | AgencyName          | AgencyLocation                  | ContactInfo                    |
+|----------|---------------------|---------------------------------|--------------------------------|
+| 1        | Global Adventures   | 123 Adventure Lane, Seattle     | contact@globaladventures.com   |
+| 2        | Sunset Travels      | 456 Sunset Blvd, Miami          | info@sunsettravels.com         |
+| 3        | Mountain High Tours | 789 Peak St, Denver             | support@mountainhightours.com  |
+| 4        | City Escape         | 1010 Urban Ave, New York        | hello@cityescape.com           |
+| 5        | Beachfront Journeys | 1212 Ocean Drive, Los Angeles   | service@beachfrontjourneys.com |
+| 6        | Heritage Voyages    | 1313 History Rd, Boston         | contact@heritagevoyages.com    |
+| 7        | Nature Trails       | 1414 Forest Path, Portland      | info@naturetrails.com          |
+| 8        | Winter Wonder Tours | 1515 Snow Ave, Minneapolis      | support@winterwondertours.com  |
+| 9        | Desert Discoveries  | 1616 Dune Ct, Phoenix           | hello@desertdiscoveries.com    |
+| 10       | Safari Quest        | 1717 Safari Ln, Nairobi         | service@safariquest.com        |
+
+# Agent
+
+| AgentID | FirstName | LastName | Email               | Phone        | ExperienceYears | Specialization       |
+|---------|-----------|----------|---------------------|--------------|-----------------|----------------------|
+| 1       | John      | Doe      | johndoe@email.com   | 123-456-7890 | 5               | Adventure            |
+| 2       | Jane      | Smith    | janesmith@email.com | 123-456-7891 | 3               | Beach                |
+| 3       | Emily     | Johnson  | emilyjohnson@email.com | 123-456-7892 | 8            | Cultural             |
+| 4       | Mike      | Brown    | mikebrown@email.com | 123-456-7893 | 10              | Eco-Tourism          |
+| 5       | Sarah     | Davis    | sarahdavis@email.com | 123-456-7894 | 7              | Luxury               |
+| 6       | Chris     | Miller   | chrismiller@email.com | 123-456-7895 | 6             | Safari               |
+| 7       | Anna      | Wilson   | annawilson@email.com | 123-456-7896 | 4               | Urban Exploration    |
+| 8       | David     | Moore    | davidmoore@email.com | 123-456-7897 | 9               | Mountain Trekking    |
+| 9       | Laura     | Taylor   | laurataylor@email.com | 123-456-7898 | 2             | Historical Tours     |
+| 10      | James     | Anderson | jamesanderson@email.com | 123-456-7899 | 11           | Wildlife             |
+
+# Trip
+
+| TripID | BookingDate | StartDate  | EndDate    |
+|--------|-------------|------------|------------|
+| 1      | 2023-01-01  | 2023-06-10 | 2023-06-20 |
+| 2      | 2023-01-15  | 2023-07-05 | 2023-07-15 |
+| 3      | 2023-02-01  | 2023-08-15 | 2023-08-25 |
+| 4      | 2023-02-20  | 2023-09-01 | 2023-09-10 |
+| 5      | 2023-03-10  | 2023-10-20 | 2023-10-30 |
+| 6      | 2023-03-25  | 2023-11-05 | 2023-11-15 |
+| 7      | 2023-04-10  | 2023-12-10 | 2023-12-20 |
+| 8      | 2023-04-25  | 2024-01-15 | 2024-01-25 |
+| 9      | 2023-05-10  | 2024-02-05 | 2024-02-15 |
+| 10     | 2023-05-25  | 2024-03-10 | 2024-03-20 |
+
+# Package
+
+| PackageID | PackageName       | TotalCost | Duration | Description                                       |
+|-----------|-------------------|-----------|----------|---------------------------------------------------|
+| 1         | Adventure Seeker  | 1500.00   | 7        | A thrilling adventure package for adrenaline seekers |
+| 2         | Beach Relaxation  | 1200.00   | 5        | A relaxing beach holiday with sun and sand        |
+| 3         | Cultural Explorer | 1800.00   | 10       | An immersive experience into local culture and history |
+| 4         | Eco Paradise      | 2000.00   | 8        | An eco-friendly tour focused on sustainability and nature |
+| 5         | Luxury Getaway    | 2500.00   | 7        | A luxurious and pampering retreat for ultimate relaxation |
+| 6         | Safari Adventure  | 2200.00   | 9        | An exciting safari trip through the wilderness    |
+| 7         | Urban Discovery   | 1300.00   | 6        | Exploring the heart of major cities and their hidden gems |
+| 8         | Mountain Trek     | 1600.00   | 7        | A challenging and rewarding mountain trekking experience |
+| 9         | Historical Journey| 1700.00   | 8        | A journey through time to explore historical landmarks |
+| 10        | Wildlife Encounter| 1900.00   | 9        | An opportunity to get close to exotic wildlife in their natural habitat |
+
+# Traveler
+
+| TravelerID | FirstName | LastName  | DateOfBirth | Email            | Phone        | Address                      | Budget  |
+|------------|-----------|-----------|-------------|------------------|--------------|------------------------------|---------|
+| 1          | Alice     | Hamilton  | 1985-04-23  | alice@email.com  | 234-567-8901 | 1010 Maple St, Toronto       | 3000.00 |
+| 2          | Bob       | Johnson   | 1990-07-16  | bob@email.com    | 234-567-8902 | 2020 Oak Ave, London         | 2500.00 |
+| 3          | Clara     | Lee       | 1978-11-02  | clara@email.com  | 234-567-8903 | 3030 Birch Ln, Sydney        | 3500.00 |
+| 4          | David     | Smith     | 1982-02-14  | david@email.com  | 234-567-8904 | 4040 Cedar Blvd, New York    | 4000.00 |
+| 5          | Eva       | Martinez  | 1995-05-28  | eva@email.com    | 234-567-8905 | 5050 Pine Rd, Madrid         | 2800.00 |
+| 6          | Frank     | Brown     | 1988-09-30  | frank@email.com  | 234-567-8906 | 6060 Spruce St, Berlin       | 3200.00 |
+| 7          | Grace     | Wilson    | 1992-12-15  | grace@email.com  | 234-567-8907 | 7070 Fir Ln, Paris           | 2600.00 |
+| 8          | Harry     | Davis     | 1975-06-08  | harry@email.com  | 234-567-8908 | 8080 Elm St, Tokyo           | 3800.00 |
+| 9          | Ivy       | Garcia    | 1984-03-22  | ivy@email.com    | 234-567-8909 | 9090 Aspen Rd, Beijing       | 3400.00 |
+| 10         | Jack      | Miller    | 1993-01-10  | jack@email.com   | 234-567-8910 | 1010 Redwood Ave, San Francisco | 2900.00 |
+
+# Destination
+
+| DestinationID | Name               | Country  | City       | Description                   | PopularAttractions          | AverageCost |
+|---------------|--------------------|----------|------------|-------------------------------|-----------------------------|-------------|
+| 1             | Grand Canyon       | USA      | Arizona    | A breathtaking natural wonder | Hiking, Sightseeing         | 500.00      |
+| 2             | Eiffel Tower       | France   | Paris      | Iconic French landmark       | Sightseeing, Dining         | 600.00      |
+| 3             | Great Barrier Reef | Australia| Queensland | Largest coral reef system    | Snorkeling, Diving          | 700.00      |
+| 4             | Taj Mahal          | India    | Agra       | A symbol of love             | Sightseeing, Photography    | 400.00      |
+| 5             | Safari Park        | Kenya    | Nairobi    | Wildlife in natural habitat  | Safari, Wildlife Watching   | 800.00      |
+| 6             | Great Wall of China| China    | Beijing    | Historic fortification       | Hiking, History Tours       | 450.00      |
+| 7             | Machu Picchu       | Peru     | Cusco      | Ancient Incan city           | Hiking, Archaeological Tours| 550.00      |
+| 8             | Venice Canals      | Italy    | Venice     | Famous waterways and architecture | Boating, Sightseeing   | 600.00      |
+| 9             | Yellowstone Park   | USA      | Wyoming    | First national park with geothermal features | Hiking, Wildlife Viewing | 350.00 |
+| 10            | Pyramids of Giza   | Egypt    | Cairo      | Ancient Egyptian pyramids    | History Tours, Photography  | 500.00      |
+
+# Hotel
+
+| HotelID | Name                | DestinationID | CostPerNight | Rating |
+|---------|---------------------|---------------|--------------|--------|
+| 1       | Mountain View Lodge | 1             | 100.00       | 4.5    |
+| 2       | Roma Historical Hotel| 2             | 150.00       | 4.8    |
+| 3       | Bali Beach Resort   | 3             | 120.00       | 3.9    |
+| 4       | Urban Escape Hotel  | 4             | 200.00       | 4.2    |
+| 5       | Safari Camp Retreat | 5             | 180.00       | 4.7    |
+| 6       | Alpine Chalet       | 6             | 130.00       | 4.6    |
+| 7       | Maldives Paradise   | 7             | 300.00       | 4.9    |
+| 8       | Acropolis View Hotel| 8             | 160.00       | 4.4    |
+| 9       | Desert Oasis Resort | 9             | 220.00       | 4.3    |
+| 10      | Phuket Beachfront   | 10            | 90.00        | 4.0    |
+
+# Travel
+
+| TravelID | Type    | DepartureLocation | ArrivalLocation | DepartureDate | ArrivalDate | Cost  | Provider           |
+|----------|---------|-------------------|-----------------|---------------|-------------|-------|--------------------|
+| 1        | Flight  | New York          | London          | 2023-06-10    | 2023-06-11  | 1000.00 | Sky Airlines      |
+| 2        | Train   | Paris             | Berlin          | 2023-07-05    | 2023-07-06  | 150.00 | EuroRail          |
+| 3        | Bus     | Los Angeles       | San Francisco   | 2023-08-15    | 2023-08-16  | 50.00 | Pacific Coaches   |
+| 4        | Cruise  | Miami             | Bahamas         | 2023-09-01    | 2023-09-02  | 500.00 | Ocean Voyages     |
+| 5        | Flight  | Sydney            | Tokyo           | 2023-10-20    | 2023-10-21  | 1200.00 | Southern Cross Air|
+| 6        | Train   | Moscow            | St. Petersburg  | 2023-11-05    | 2023-11-06  | 100.00 | Trans-Siberian Rail|
+| 7        | Bus     | Toronto           | Montreal        | 2023-12-10    | 2023-12-11  | 80.00 | Maple Line         |
+| 8        | Cruise  | Cape Town         | Madagascar      | 2024-01-15    | 2024-01-16  | 700.00 | African Sea Adventures|
+| 9        | Flight  | Dubai             | Paris           | 2024-02-05    | 2024-02-06  | 950.00 | Gulf Wings        |
+| 10       | Train   | Beijing           | Shanghai        | 2024-03-10    | 2024-03-11  | 130.00 | Dragon Express    |
+
+# Payment
+
+| PaymentID | Amount  | PaymentDate | PaymentMethod  |
+|-----------|---------|-------------|----------------|
+| 1         | 1500.00 | 2023-01-01  | Credit Card    |
+| 2         | 1200.00 | 2023-01-15  | PayPal         |
+| 3         | 1800.00 | 2023-02-01  | Debit Card     |
+| 4         | 2000.00 | 2023-02-20  | Bank Transfer  |
+| 5         | 2500.00 | 2023-03-10  | Credit Card    |
+| 6         | 2200.00 | 2023-03-25  | PayPal         |
+| 7         | 1300.00 | 2023-04-10  | Debit Card     |
+| 8         | 1600.00 | 2023-04-25  | Bank Transfer  |
+| 9         | 1700.00 | 2023-05-10  | Credit Card    |
+| 10        | 1900.00 | 2023-05-25  | PayPal         |
+
+# Transaction
+
+| TransactionID | TravelerID | Amount | PaymentStatus | PaymentMethod  |
+|---------------|------------|--------|---------------|----------------|
+| 1             | 101        | 500.00 | Paid          | Credit Card    |
+| 2             | 102        | 700.00 | Paid          | PayPal         |
+| 3             | 103        | 450.00 | Pending       | Bank Transfer  |
+| 4             | 104        | 600.00 | Paid          | Debit Card     |
+| 5             | 105        | 850.00 | Paid          | Cash           |
+| 6             | 106        | 550.00 | Pending       | Credit Card    |
+| 7             | 107        | 750.00 | Paid          | PayPal         |
+| 8             | 108        | 400.00 | Pending       | Bank Transfer  |
+| 9             | 109        | 680.00 | Paid          | Debit Card     |
+| 10            | 110        | 900.00 | Paid          | Credit Card    |
+
+
+# Review
+
+| ReviewID | TravelID | TravelerID | Rating | Review_Text                                 |
+|----------|----------|------------|--------|---------------------------------------------|
+| 1        | 1        | 101        | 4      | Enjoyed the trek, stunning views!           |
+| 2        | 2        | 102        | 5      | Fascinating history, excellent tour guide!  |
+| 3        | 3        | 103        | 3      | Beautiful beaches, but hotel service could improve |
+| 4        | 4        | 104        | 4      | Loved exploring the city, great food recommendations |
+| 5        | 5        | 105        | 5      | Amazing wildlife experience, knowledgeable guides |
+| 6        | 6        | 106        | 4      | Serene mountain retreat, cozy accommodations |
+| 7        | 7        | 107        | 2      | Disappointing stay, cleanliness issues      |
+| 8        | 8        | 108        | 5      | Rich history, friendly locals               |
+| 9        | 9        | 109        | 4      | Thrilling desert adventure, great cultural insights |
+| 10       | 10       | 110        | 3      | Beautiful islands, but crowded during peak season |
+
+# Background
+
+[The "Travel database" API]("http://127.0.0.1:5000") is a RESTful web service that provides information about the "Travel Database"; where you can retrieve information of a specific Trip, Package, Transactions, or Agency, etc.
+
+Here's an overview of the main features of the API:
+
+- [**Showing all the tables:**]("http://127.0.0.1:5000/table/all") You can retrieve data about all of the tables included inside the database. Tables included: Agency, Agent, Destination, Hotels, Package, Payment, Reviews, Transactions, Travel, Traveler, Trip.
+
+- [**Retrieving specific table:**]("http://127.0.0.1:5000/table/{table_name}") The API provides details about the tables presented in previous block. From this API, the user can get data from a specific table(tables are listed 'Tables').  
+
+- [**Retrieving specifc record based on its ID:**]("http://127.0.0.1:5000/table/{table_name}/{ID}") Information of a specific record where the ID of that table is {ID}
+
+- [**Retrieving specifc record based on its attribute:**]("http://127.0.0.1:5000/table/{table_name}/{attribut}=something") The API supports filtering and search queries, which means developers can request lists of records based on the attribute passed in. E.x. /table/{table_name}/?{attribute}='something'
+
+# SQL vs API call
+
+## Setting up your environment
+
+The files for this assignment are stored in my database namespace, separate from yours.  As you work your assignment you'll be reading from and writing to yours.
+
+The next few sections set your python imports and connect to the database.
+
+```{python}
+#| eval: true
+#| echo: false
+
+# We'll be using these modules in this assignment
+
+import os
+import sys
+import requests
+import json
+import pandas as pd
+from tabulate import tabulate
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, text
+from sqlalchemy.exc import OperationalError, ProgrammingError
+from IPython.display import display, Markdown
+```
+
+## Loading DB params .env file
+
+```{python}
+#| eval: true
+#| echo: true
+
+# modify config_map to reflect credentials needed by this program
+# For this assignment, you'll only need to add this record to your .env file:
+
+#  HW9_DB_NAME=23FA_users_<your username>
+
+config_map = {
+    'user':'CMSC508_USER',
+    'password':'CMSC508_PASSWORD',
+    'host':'CMSC508_HOST',
+    'database':'GROUP_DB_NAME'
+}
+# load and store credentials
+load_dotenv()
+config = {}
+for key in config_map.keys():
+    config[key] = os.getenv(config_map[key])
+flag = False
+for param in config.keys():
+    if config[param] is None:
+        flag = True
+        print(f"Missing {config_map[param]} in .env file")
+
+# build a sqlalchemy engine string
+engine_uri = f"mysql+pymysql://{config['user']}:{config['password']}@{config['host']}/{config['database']}"
+```
+
+## Creating and testing the db connection
+
+Create and test the database connection.  Fix any errors that may show by editing your *.env* file.  If nothing pops up, you're all set!
+
+```{python}
+# create a database connection.  THIS IS THE ACTUAL CONNECTION!
+try:
+    conn = create_engine(engine_uri)
+except ArgumentError as e:
+    print(f"create_engine: Argument Error: {e}")
+    #sys.exit(1)
+except NoSuchModuleError as e:
+    print(f"create_engine: No Such Module Error: {e}")
+    #sys.exit(1)
+except Exception as e:
+    print(f"create_engine: An error occurred: {e}")
+    #sys.exit(1)
+```
+
+## Helper routines 
+
+Below are helper routines to be used in the rest of the assignment.
+
+```{python}
+## This is a helper function to keep the QMD file looking cleaner!
+
+def my_sql_wrapper( query ):
+    """ takes a query and returns a pandas dataframe for output """
+    try:
+        df = pd.read_sql( query, conn )
+    except Exception as e:
+        df = pd.DataFrame({'Query error': ["(see error message above)"]})
+        msg = str(e).replace(") (",")\n(")
+        print(msg)
+    return df
+
+def my_sql_statement( statement ):
+    """ used with DDL, when the statement doesn't return any results. """
+    try:
+        with conn.begin() as x:
+            x.execute(text(statement))
+            x.commit()
+    #    conn = create_engine(engine_uri)
+        result = ""
+    except Exception as e:
+        result = f"Error: {str(e)}"
+#    conn = create_engine(engine_uri)
+    return result
+
+```
+
+## API Helper function
+
+Bleow is the helper function that sets up the api and based url, use only needs to input the end point to the function(parameter needs to start with '/')
+Optional parameters: 
+1. /all
+2. /table_name
+3. /table_name/table_id
+4. /table_name/table_attribute=something
+
+```{python}
+def api_call(endpoint):
+    load_dotenv()
+    base_url = 'http://127.0.0.1:5000/table'
+    
+    # Load the API key from an environment variable
+    api_key = os.getenv("SECRET_KEY")
+    # Make sure API_KEY is present
+    if not api_key:
+        raise ValueError("Please set the API_KEY environment variable in your .env file")
+
+    # Construct the full URL
+    url = f"{base_url}{endpoint}"
+
+    # Add the API key as a query parameter
+    params = {
+        'api_key': api_key
+    }
+    # Make the GET request to the API
+    response = requests.get(url, params=params)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the response JSON and print the result
+        tables = response.json()
+        print("Tables:", tables)
+    else:
+        print("Failed to retrieve tables. Status code:", response.status_code)
+        print("Response:", response.text)
+```
+
+## Query 1
+Show all the tables
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SHOW TABLES;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/all")
+```
+
+## Query 2
+Show table Transactions
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Transaction;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Transaction")
+```
+
+## Query 3
+Show table Traveler
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Traveler;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Traveler")
+```
+
+## Query 4
+Show table Agent
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Agent;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Agent")
+```
+
+## Query 5
+Show table Package
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Package;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Package")
+```
+
+## Query 6
+Show table Travel
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Travel;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Travel")
+```
+
+## Query 7
+Show Agency record where it's ID is 1 from Agency table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Agency WHERE Agency_ID = 1;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Agency/1")
+```
+
+## Query 8
+Show Destination record where it's ID is 10 from Destination table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Destination WHERE Destination_ID = 10;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Destination/10")
+```
+
+## Query 9
+Show Review record where it's ID is 3 from Review table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Review where Review_ID = 3;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Review/3")
+```
+
+## Query 10
+Show Agent record where it's ID is 5 from Agent table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Agent WHERE Agent_ID = 5;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Agent/5")
+```
+
+## Query 11
+Show Transactions record where it's ID is 9 from Transactions table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Transaction where Transaction_ID = 9;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Transaction/9")
+```
+
+## Query 12
+Show Hotel records where it's ID are 101, 103, 105, 107 from Hotel table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Hotel where Hotel_ID in (101,103,105,107);
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Hotel/101,103,105,107")
+```
+
+## Query 13
+Show Destination records where it's ID are 2, 4, 6, 8 from Destination table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Destination where Destination_ID in (2, 4, 6, 8);
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Destination/2,4,6,8")
+```
+
+## Query 14
+Show Review records where it's ID are 4, 2, 3, 6, 1 from Review table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Review where Review_ID in (4,2,3,6,1);
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Review/4,2,3,6,1")
+```
+
+## Query 15
+Show Travel records where it's ID are 5, 2, 3, 6, 9 from Travel table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Travel where Travel_ID in (5,2,3,9);
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Travel/5,2,3,6,9")
+```
+
+## Query 16
+Show records where Agency name is Safari Quest from Agency table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Agency where Agency_name="Safari Quest";
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Agency/?Agency_name=Safari Quest")
+```
+
+## Query 17
+Show records where Package duration is 7 days from Package table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Package where Duration=7;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Package/?Duration=7")
+```
+
+## Query 18
+Show records where Trip booking date is 2023-01-01 from Trip table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Trip WHERE Booking_date='2023-01-01';
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Trip/?Booking_date=2023-01-01")
+```
+
+## Query 19
+Show records where Travel_ID is 3 from Traveler table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Traveler where Traveler_ID=3;
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Traveler/?Traveler_ID=3")
+```
+
+## Query 20
+Show records where Payment Status is pending and Paymen method is bank transfer from transaction table
+
+### SQL
+
+```{python}
+my_sql_wrapper("""
+SELECT * from Transaction where Payment_Status='Pending' AND Payment_Method = 'Bank Transfer';
+""")
+
+```
+
+### API
+
+```{python}
+api_call("/Transaction/?Payment_Status=Pending&Payment_Method=Bank Transfer")
+```
