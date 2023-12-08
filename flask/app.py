@@ -1,12 +1,12 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import os
 import sys
 import pandas as pd
 from tabulate import tabulate
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
-from sqlalchemy.exc import OperationalError, ProgrammingError
-from IPython.display import display, Markdown
+from functools import wraps
+
 
 config_map = {
     'user':'CMSC508_USER',
@@ -41,10 +41,10 @@ except Exception as e:
     print(f"create_engine: An error occurred: {e}")
     #sys.exit(1)
 
-def my_sql_wrapper( query ):
-    """ takes a query and returns a pandas dataframe for output """
+def my_sql_wrapper(query, params=None):
+    """Executes a SQL query safely using parameters."""
     try:
-        df = pd.read_sql( query, conn )
+        df = pd.read_sql(query, conn, params=params)
     except Exception as e:
         df = pd.DataFrame({'Query error': ["(see error message above)"]})
         msg = str(e).replace(") (",")\n(")
@@ -66,30 +66,90 @@ def my_sql_statement( statement ):
 
 app = Flask(__name__)
 
-@app.route("/table")
+API_KEY = os.getenv("SECRET_KEY")
+
+def is_valid_table(name):
+    """Checks if the given table name is valid."""
+    valid_tables = pd.read_sql("SHOW TABLES", conn)
+    return name in valid_tables.values
+
+def require_api_key(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        input_key = request.args.get('api_key') or request.form.get('api_key')
+        if input_key != API_KEY:
+            return jsonify({'Error': 'Unauthorized'}), 401
+        return f(*args, **kwargs)
+    return decorated_function
+
+@app.route("/table/all")
+@require_api_key
 def table_all():
-    df = my_sql_wrapper("show  tables")
-    response = df.to_json()
+    df = my_sql_wrapper("SHOW TABLES")
+    response = df.to_dict(orient='records')
     return jsonify(response)
 
-
 @app.route("/table/<name>")
-def table(name = None):
-    df = my_sql_wrapper("show tables").to_json()
+@require_api_key
+def table_retriever(name=None):
+    if not is_valid_table(name):
+        return jsonify("Error: Invalid table name!"), 400
 
-    if name in df:
-        bf = my_sql_wrapper(f"select * from {name}").to_json()
-        return jsonify(bf)
+    query = text(f"SELECT * FROM {name}")
+    df = my_sql_wrapper(query)
+    response = df.to_dict(orient='records')
+    return jsonify(response)
+
+@app.route("/table/<name>/<ids>")
+@require_api_key
+def id_retriever(name, ids):
+    if not is_valid_table(name):
+        return jsonify("Error: Invalid table name!"), 400
+
+    try:
+        id_list = [int(id_str) for id_str in ids.split(',')]
+    except ValueError:
+        return jsonify("Error: IDs must be integers"), 400
+
+    query = text(f"SELECT * FROM {name} WHERE {name}_ID IN :id_list")
+    df = my_sql_wrapper(query, params={"id_list": tuple(id_list)})
+    response = df.to_dict(orient='records')
+    return jsonify(response)
+
+@app.route("/table/<name>/", methods=['GET'])
+@require_api_key
+def attribute_retriever(name):
+    if not is_valid_table(name):
+        return jsonify("Error: Invalid table name!"), 400
+
+    # Initialize the base query
+    query = f"SELECT * FROM {name}"
+    params = {}
+
+    # Check if there are query parameters for filtering
+    query_parameters = request.args
+    if query_parameters:
+        filters = []
+        for key, value in query_parameters.items():
+            # Exclude 'api_key' from SQL query parameters
+            if key != 'api_key':
+                filters.append(f"{key} = :{key}")
+                params[key] = value
+
+        if filters:
+            query += " WHERE " + " AND ".join(filters)
+        else:
+            # Handle the case where no relevant query parameters are provided
+            return jsonify("Error: No relevant query parameters provided!"), 400
     else:
-        return jsonify("Error: Name is not in database!")
+        # Handle the case where no query parameters are provided
+        return jsonify("Error: No query parameters provided!"), 400
 
-@app.route("/table/<name>/<int:id>")
-def get_id(name, id):
-    if name or id is None:
-        return jsonify("Error: One or more parameter missing!")
-    
-    df = my_sql_wrapper(f"select * from {name} where {name}_ID = {id}").to_json()
-    return jsonify(df)
+    # Execute the query
+    df = my_sql_wrapper(text(query), params)
+    response = df.to_dict(orient='records')
+    return jsonify(response)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
