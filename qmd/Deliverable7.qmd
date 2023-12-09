@@ -955,3 +955,11 @@ SELECT * from Transaction where Payment_Status='Pending' AND Payment_Method = 'B
 ```{python}
 api_call("/Transaction/?Payment_Status=Pending&Payment_Method=Bank Transfer")
 ```
+
+## Reflection
+
+Constructing the travel database project and integrating it into an HTML page using Flask was a valuable learning experience. We focused on user-friendly database design for the HTML display through Flask. We simplified the booking process and optimized performance for smooth operation. Feedback from others was instrumental in refining the project. This project serves as a starting point for creating a user-friendly travel database, with an emphasis on simplicity and functionality.
+
+## Future Considerations
+
+Looking ahead, there are several aspects to consider for potential improvements in the travel database project. Enhancing search options for users to easily find relevant travel information is another potential improvement. Providing more features for users to search and utilize for their travels is essential. These considerations provide a roadmap for potential future enhancements to make the travel database more robust and user-friendly.
