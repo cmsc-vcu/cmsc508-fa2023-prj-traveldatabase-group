@@ -1,6 +1,6 @@
-# Welcome to Traval Database Project 
+# Welcome to Travel Database Project 
 
-## Project Describtion
+## Project Description
 This database gives an overview of what is expected from the travel database. We created designs and questions to further help explain what will be happening in this database. It is a good guide for moving forward while creating it
 
 ## Team members:
@@ -13,7 +13,7 @@ This database gives an overview of what is expected from the travel database. We
 * https://vcu.mediaspace.kaltura.com/media/Deliverable+4/1_lvz9r2o8
 
 - *./src* - to hold your python/flask source code
-- *./reports* - to hold your deliverable reports. Within this folder I recommend a consistent naming convention for file like *deliver4.qmd*, *deliver5.qmd*, etc.
+- *./reports* - to hold your deliverable reports. Within this folder, I recommend a consistent naming convention for files like *deliver4.qmd*, *deliver5.qmd*, etc.
 
 
 
