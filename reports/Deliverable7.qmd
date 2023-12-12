@@ -10,7 +10,9 @@ format:
         code-copy: true
 ---
 GITHUB URL: https://github.com/cmsc-vcu/cmsc508-fa2023-prj-traveldatabase-group
-Deliverable 7 video link: https://cdnapisec.kaltura.com/index.php/extwidget/preview/partner_id/1888231/uiconf_id/28242191/entry_id/1_w0vi5cbw/embed/dynamic
+
+Deliverable 7 video link: https://vcu.mediaspace.kaltura.com/media/Deliverable+7/1_w0vi5cbw
+
 app.py -- flask
 
 # Project Description
