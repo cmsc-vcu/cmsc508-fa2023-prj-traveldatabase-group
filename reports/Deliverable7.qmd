@@ -10,6 +10,8 @@ format:
         code-copy: true
 ---
 GITHUB URL: https://github.com/cmsc-vcu/cmsc508-fa2023-prj-traveldatabase-group
+Deliverable 7 video link: https://cdnapisec.kaltura.com/index.php/extwidget/preview/partner_id/1888231/uiconf_id/28242191/entry_id/1_w0vi5cbw/embed/dynamic
+app.py -- flask
 
 # Project Description
 The Travel Database is a dynamic platform tailored for travel enthusiasts, providing a centralized hub for crucial information on destinations, hotels, and tour packages. With a focus on enhancing the tourist experience, the database covers key domains such as Billing and Payments, Package Tours, Reviews and Ratings, and Accommodation Management. Our mission is to empower users to plan cost-effective and memorable journeys, offering a user-friendly interface that caters to the needs of friends and family who share a love for exploration. Travel Database: Your passport to seamless and informed travel planning.

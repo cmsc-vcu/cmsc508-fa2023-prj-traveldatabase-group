@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Saifuding Daniyaer, Kaela Strawbridge">
-<meta name="dcterms.date" content="2023-12-09">
+<meta name="dcterms.date" content="2023-12-11">
 
 <title>Deliverable 7</title>
 <style>
@@ -3482,7 +3482,7 @@ z-index: 1000;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 9, 2023</p>
+      <p class="date">December 11, 2023</p>
     </div>
   </div>
   
@@ -3492,7 +3492,7 @@ z-index: 1000;
 
 </header>
 
-<p>GITHUB URL: https://github.com/cmsc-vcu/cmsc508-fa2023-prj-traveldatabase-group</p>
+<p>GITHUB URL: https://github.com/cmsc-vcu/cmsc508-fa2023-prj-traveldatabase-group Deliverable 7 video link: https://cdnapisec.kaltura.com/index.php/extwidget/preview/partner_id/1888231/uiconf_id/28242191/entry_id/1_w0vi5cbw/embed/dynamic app.py – flask</p>
 <section id="project-description" class="level1">
 <h1>Project Description</h1>
 <p>The Travel Database is a dynamic platform tailored for travel enthusiasts, providing a centralized hub for crucial information on destinations, hotels, and tour packages. With a focus on enhancing the tourist experience, the database covers key domains such as Billing and Payments, Package Tours, Reviews and Ratings, and Accommodation Management. Our mission is to empower users to plan cost-effective and memorable journeys, offering a user-friendly interface that caters to the needs of friends and family who share a love for exploration. Travel Database: Your passport to seamless and informed travel planning.</p>
@@ -5088,7 +5088,8 @@ Transaction{
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/all&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Tables_in_23FA_groups_group25&#39;: &#39;Agency&#39;}, {&#39;Tables_in_23FA_groups_group25&#39;: &#39;Agent&#39;}, {&#39;Tables_in_23FA_groups_group25&#39;: &#39;Destination&#39;}, {&#39;Tables_in_23FA_groups_group25&#39;: &#39;Hotel&#39;}, {&#39;Tables_in_23FA_groups_group25&#39;: &#39;Package&#39;}, {&#39;Tables_in_23FA_groups_group25&#39;: &#39;Payment&#39;}, {&#39;Tables_in_23FA_groups_group25&#39;: &#39;Review&#39;}, {&#39;Tables_in_23FA_groups_group25&#39;: &#39;Transaction&#39;}, {&#39;Tables_in_23FA_groups_group25&#39;: &#39;Travel&#39;}, {&#39;Tables_in_23FA_groups_group25&#39;: &#39;Traveler&#39;}, {&#39;Tables_in_23FA_groups_group25&#39;: &#39;Trip&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -5210,7 +5211,8 @@ Transaction{
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Transaction&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Amount&#39;: 500.0, &#39;Payment_Method&#39;: &#39;Credit Card&#39;, &#39;Payment_Status&#39;: &#39;Paid&#39;, &#39;Transaction_ID&#39;: 1, &#39;Traveler_ID&#39;: 101}, {&#39;Amount&#39;: 700.0, &#39;Payment_Method&#39;: &#39;PayPal&#39;, &#39;Payment_Status&#39;: &#39;Paid&#39;, &#39;Transaction_ID&#39;: 2, &#39;Traveler_ID&#39;: 102}, {&#39;Amount&#39;: 450.0, &#39;Payment_Method&#39;: &#39;Bank Transfer&#39;, &#39;Payment_Status&#39;: &#39;Pending&#39;, &#39;Transaction_ID&#39;: 3, &#39;Traveler_ID&#39;: 103}, {&#39;Amount&#39;: 600.0, &#39;Payment_Method&#39;: &#39;Debit Card&#39;, &#39;Payment_Status&#39;: &#39;Paid&#39;, &#39;Transaction_ID&#39;: 4, &#39;Traveler_ID&#39;: 104}, {&#39;Amount&#39;: 850.0, &#39;Payment_Method&#39;: &#39;Cash&#39;, &#39;Payment_Status&#39;: &#39;Paid&#39;, &#39;Transaction_ID&#39;: 5, &#39;Traveler_ID&#39;: 105}, {&#39;Amount&#39;: 550.0, &#39;Payment_Method&#39;: &#39;Credit Card&#39;, &#39;Payment_Status&#39;: &#39;Pending&#39;, &#39;Transaction_ID&#39;: 6, &#39;Traveler_ID&#39;: 106}, {&#39;Amount&#39;: 750.0, &#39;Payment_Method&#39;: &#39;PayPal&#39;, &#39;Payment_Status&#39;: &#39;Paid&#39;, &#39;Transaction_ID&#39;: 7, &#39;Traveler_ID&#39;: 107}, {&#39;Amount&#39;: 400.0, &#39;Payment_Method&#39;: &#39;Bank Transfer&#39;, &#39;Payment_Status&#39;: &#39;Pending&#39;, &#39;Transaction_ID&#39;: 8, &#39;Traveler_ID&#39;: 108}, {&#39;Amount&#39;: 680.0, &#39;Payment_Method&#39;: &#39;Debit Card&#39;, &#39;Payment_Status&#39;: &#39;Paid&#39;, &#39;Transaction_ID&#39;: 9, &#39;Traveler_ID&#39;: 109}, {&#39;Amount&#39;: 900.0, &#39;Payment_Method&#39;: &#39;Credit Card&#39;, &#39;Payment_Status&#39;: &#39;Paid&#39;, &#39;Transaction_ID&#39;: 10, &#39;Traveler_ID&#39;: 110}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -5365,7 +5367,8 @@ Transaction{
 <div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Traveler&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Budget&#39;: 3000.0, &#39;Date_of_birth&#39;: &#39;Tue, 23 Apr 1985 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 1, &#39;Traveler_address&#39;: &#39;1010 Maple St, Toronto&#39;, &#39;Traveler_email&#39;: &#39;alice@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;Alice&#39;, &#39;Traveler_last_name&#39;: &#39;Hamilton&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8901&#39;}, {&#39;Budget&#39;: 2500.0, &#39;Date_of_birth&#39;: &#39;Mon, 16 Jul 1990 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 2, &#39;Traveler_address&#39;: &#39;2020 Oak Ave, London&#39;, &#39;Traveler_email&#39;: &#39;bob@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;Bob&#39;, &#39;Traveler_last_name&#39;: &#39;Johnson&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8902&#39;}, {&#39;Budget&#39;: 3500.0, &#39;Date_of_birth&#39;: &#39;Thu, 02 Nov 1978 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 3, &#39;Traveler_address&#39;: &#39;3030 Birch Ln, Sydney&#39;, &#39;Traveler_email&#39;: &#39;clara@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;Clara&#39;, &#39;Traveler_last_name&#39;: &#39;Lee&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8903&#39;}, {&#39;Budget&#39;: 4000.0, &#39;Date_of_birth&#39;: &#39;Sun, 14 Feb 1982 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 4, &#39;Traveler_address&#39;: &#39;4040 Cedar Blvd, New York&#39;, &#39;Traveler_email&#39;: &#39;david@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;David&#39;, &#39;Traveler_last_name&#39;: &#39;Smith&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8904&#39;}, {&#39;Budget&#39;: 2800.0, &#39;Date_of_birth&#39;: &#39;Sun, 28 May 1995 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 5, &#39;Traveler_address&#39;: &#39;5050 Pine Rd, Madrid&#39;, &#39;Traveler_email&#39;: &#39;eva@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;Eva&#39;, &#39;Traveler_last_name&#39;: &#39;Martinez&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8905&#39;}, {&#39;Budget&#39;: 3200.0, &#39;Date_of_birth&#39;: &#39;Fri, 30 Sep 1988 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 6, &#39;Traveler_address&#39;: &#39;6060 Spruce St, Berlin&#39;, &#39;Traveler_email&#39;: &#39;frank@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;Frank&#39;, &#39;Traveler_last_name&#39;: &#39;Brown&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8906&#39;}, {&#39;Budget&#39;: 2600.0, &#39;Date_of_birth&#39;: &#39;Tue, 15 Dec 1992 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 7, &#39;Traveler_address&#39;: &#39;7070 Fir Ln, Paris&#39;, &#39;Traveler_email&#39;: &#39;grace@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;Grace&#39;, &#39;Traveler_last_name&#39;: &#39;Wilson&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8907&#39;}, {&#39;Budget&#39;: 3800.0, &#39;Date_of_birth&#39;: &#39;Sun, 08 Jun 1975 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 8, &#39;Traveler_address&#39;: &#39;8080 Elm St, Tokyo&#39;, &#39;Traveler_email&#39;: &#39;harry@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;Harry&#39;, &#39;Traveler_last_name&#39;: &#39;Davis&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8908&#39;}, {&#39;Budget&#39;: 3400.0, &#39;Date_of_birth&#39;: &#39;Thu, 22 Mar 1984 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 9, &#39;Traveler_address&#39;: &#39;9090 Aspen Rd, Beijing&#39;, &#39;Traveler_email&#39;: &#39;ivy@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;Ivy&#39;, &#39;Traveler_last_name&#39;: &#39;Garcia&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8909&#39;}, {&#39;Budget&#39;: 2900.0, &#39;Date_of_birth&#39;: &#39;Sun, 10 Jan 1993 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 10, &#39;Traveler_address&#39;: &#39;1010 Redwood Ave, San Francisco&#39;, &#39;Traveler_email&#39;: &#39;jack@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;Jack&#39;, &#39;Traveler_last_name&#39;: &#39;Miller&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8910&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -5509,7 +5512,8 @@ Transaction{
 <div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Agent&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Agent_ID&#39;: 1, &#39;Agent_email&#39;: &#39;johndoe@email.com&#39;, &#39;Agent_first_name&#39;: &#39;John&#39;, &#39;Agent_last_name&#39;: &#39;Doe&#39;, &#39;Agent_phone&#39;: &#39;123-456-7890&#39;, &#39;Experience_years&#39;: 5.0, &#39;Specialization&#39;: &#39;Adventure&#39;}, {&#39;Agent_ID&#39;: 2, &#39;Agent_email&#39;: &#39;janesmith@email.com&#39;, &#39;Agent_first_name&#39;: &#39;Jane&#39;, &#39;Agent_last_name&#39;: &#39;Smith&#39;, &#39;Agent_phone&#39;: &#39;123-456-7891&#39;, &#39;Experience_years&#39;: 3.0, &#39;Specialization&#39;: &#39;Beach&#39;}, {&#39;Agent_ID&#39;: 3, &#39;Agent_email&#39;: &#39;emilyjohnson@email.com&#39;, &#39;Agent_first_name&#39;: &#39;Emily&#39;, &#39;Agent_last_name&#39;: &#39;Johnson&#39;, &#39;Agent_phone&#39;: &#39;123-456-7892&#39;, &#39;Experience_years&#39;: 8.0, &#39;Specialization&#39;: &#39;Cultural&#39;}, {&#39;Agent_ID&#39;: 4, &#39;Agent_email&#39;: &#39;mikebrown@email.com&#39;, &#39;Agent_first_name&#39;: &#39;Mike&#39;, &#39;Agent_last_name&#39;: &#39;Brown&#39;, &#39;Agent_phone&#39;: &#39;123-456-7893&#39;, &#39;Experience_years&#39;: 10.0, &#39;Specialization&#39;: &#39;Eco-Tourism&#39;}, {&#39;Agent_ID&#39;: 5, &#39;Agent_email&#39;: &#39;sarahdavis@email.com&#39;, &#39;Agent_first_name&#39;: &#39;Sarah&#39;, &#39;Agent_last_name&#39;: &#39;Davis&#39;, &#39;Agent_phone&#39;: &#39;123-456-7894&#39;, &#39;Experience_years&#39;: 7.0, &#39;Specialization&#39;: &#39;Luxury&#39;}, {&#39;Agent_ID&#39;: 6, &#39;Agent_email&#39;: &#39;chrismiller@email.com&#39;, &#39;Agent_first_name&#39;: &#39;Chris&#39;, &#39;Agent_last_name&#39;: &#39;Miller&#39;, &#39;Agent_phone&#39;: &#39;123-456-7895&#39;, &#39;Experience_years&#39;: 6.0, &#39;Specialization&#39;: &#39;Safari&#39;}, {&#39;Agent_ID&#39;: 7, &#39;Agent_email&#39;: &#39;annawilson@email.com&#39;, &#39;Agent_first_name&#39;: &#39;Anna&#39;, &#39;Agent_last_name&#39;: &#39;Wilson&#39;, &#39;Agent_phone&#39;: &#39;123-456-7896&#39;, &#39;Experience_years&#39;: 4.0, &#39;Specialization&#39;: &#39;Urban Exploration&#39;}, {&#39;Agent_ID&#39;: 8, &#39;Agent_email&#39;: &#39;davidmoore@email.com&#39;, &#39;Agent_first_name&#39;: &#39;David&#39;, &#39;Agent_last_name&#39;: &#39;Moore&#39;, &#39;Agent_phone&#39;: &#39;123-456-7897&#39;, &#39;Experience_years&#39;: 9.0, &#39;Specialization&#39;: &#39;Mountain Trekking&#39;}, {&#39;Agent_ID&#39;: 9, &#39;Agent_email&#39;: &#39;laurataylor@email.com&#39;, &#39;Agent_first_name&#39;: &#39;Laura&#39;, &#39;Agent_last_name&#39;: &#39;Taylor&#39;, &#39;Agent_phone&#39;: &#39;123-456-7898&#39;, &#39;Experience_years&#39;: 2.0, &#39;Specialization&#39;: &#39;Historical Tours&#39;}, {&#39;Agent_ID&#39;: 10, &#39;Agent_email&#39;: &#39;jamesanderson@email.com&#39;, &#39;Agent_first_name&#39;: &#39;James&#39;, &#39;Agent_last_name&#39;: &#39;Anderson&#39;, &#39;Agent_phone&#39;: &#39;123-456-7899&#39;, &#39;Experience_years&#39;: 11.0, &#39;Specialization&#39;: &#39;Wildlife&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -5631,7 +5635,8 @@ Transaction{
 <div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Package&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Duration&#39;: 7, &#39;Package_ID&#39;: 1, &#39;Package_description&#39;: &#39;A thrilling adventure package for adrenaline seekers&#39;, &#39;Package_name&#39;: &#39;Adventure Seeker&#39;, &#39;Total_cost&#39;: 1500.0}, {&#39;Duration&#39;: 5, &#39;Package_ID&#39;: 2, &#39;Package_description&#39;: &#39;A relaxing beach holiday with sun and sand&#39;, &#39;Package_name&#39;: &#39;Beach Relaxation&#39;, &#39;Total_cost&#39;: 1200.0}, {&#39;Duration&#39;: 10, &#39;Package_ID&#39;: 3, &#39;Package_description&#39;: &#39;An immersive experience into local culture and history&#39;, &#39;Package_name&#39;: &#39;Cultural Explorer&#39;, &#39;Total_cost&#39;: 1800.0}, {&#39;Duration&#39;: 8, &#39;Package_ID&#39;: 4, &#39;Package_description&#39;: &#39;An eco-friendly tour focused on sustainability and nature&#39;, &#39;Package_name&#39;: &#39;Eco Paradise&#39;, &#39;Total_cost&#39;: 2000.0}, {&#39;Duration&#39;: 7, &#39;Package_ID&#39;: 5, &#39;Package_description&#39;: &#39;A luxurious and pampering retreat for ultimate relaxation&#39;, &#39;Package_name&#39;: &#39;Luxury Getaway&#39;, &#39;Total_cost&#39;: 2500.0}, {&#39;Duration&#39;: 9, &#39;Package_ID&#39;: 6, &#39;Package_description&#39;: &#39;An exciting safari trip through the wilderness&#39;, &#39;Package_name&#39;: &#39;Safari Adventure&#39;, &#39;Total_cost&#39;: 2200.0}, {&#39;Duration&#39;: 6, &#39;Package_ID&#39;: 7, &#39;Package_description&#39;: &#39;Exploring the heart of major cities and their hidden gems&#39;, &#39;Package_name&#39;: &#39;Urban Discovery&#39;, &#39;Total_cost&#39;: 1300.0}, {&#39;Duration&#39;: 7, &#39;Package_ID&#39;: 8, &#39;Package_description&#39;: &#39;A challenging and rewarding mountain trekking experience&#39;, &#39;Package_name&#39;: &#39;Mountain Trek&#39;, &#39;Total_cost&#39;: 1600.0}, {&#39;Duration&#39;: 8, &#39;Package_ID&#39;: 9, &#39;Package_description&#39;: &#39;A journey through time to explore historical landmarks&#39;, &#39;Package_name&#39;: &#39;Historical Journey&#39;, &#39;Total_cost&#39;: 1700.0}, {&#39;Duration&#39;: 9, &#39;Package_ID&#39;: 10, &#39;Package_description&#39;: &#39;An opportunity to get close to exotic wildlife in their natural habitat&#39;, &#39;Package_name&#39;: &#39;Wildlife Encounter&#39;, &#39;Total_cost&#39;: 1900.0}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -5775,7 +5780,8 @@ Transaction{
 <div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Travel&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Arrival_date&#39;: &#39;Sat, 10 Jun 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;London&#39;, &#39;Cost&#39;: 1000.0, &#39;Departure_location&#39;: &#39;New York&#39;, &#39;Travel_ID&#39;: 1, &#39;Travel_method&#39;: &#39;Flight&#39;, &#39;Travel_provider&#39;: &#39;Sky Airlines&#39;}, {&#39;Arrival_date&#39;: &#39;Wed, 05 Jul 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;Berlin&#39;, &#39;Cost&#39;: 150.0, &#39;Departure_location&#39;: &#39;Paris&#39;, &#39;Travel_ID&#39;: 2, &#39;Travel_method&#39;: &#39;Train&#39;, &#39;Travel_provider&#39;: &#39;EuroRail&#39;}, {&#39;Arrival_date&#39;: &#39;Tue, 15 Aug 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;San Francisco&#39;, &#39;Cost&#39;: 50.0, &#39;Departure_location&#39;: &#39;Los Angeles&#39;, &#39;Travel_ID&#39;: 3, &#39;Travel_method&#39;: &#39;Bus&#39;, &#39;Travel_provider&#39;: &#39;Pacific Coaches&#39;}, {&#39;Arrival_date&#39;: &#39;Fri, 01 Sep 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;Bahamas&#39;, &#39;Cost&#39;: 500.0, &#39;Departure_location&#39;: &#39;Miami&#39;, &#39;Travel_ID&#39;: 4, &#39;Travel_method&#39;: &#39;Cruise&#39;, &#39;Travel_provider&#39;: &#39;Ocean Voyages&#39;}, {&#39;Arrival_date&#39;: &#39;Fri, 20 Oct 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;Tokyo&#39;, &#39;Cost&#39;: 1200.0, &#39;Departure_location&#39;: &#39;Sydney&#39;, &#39;Travel_ID&#39;: 5, &#39;Travel_method&#39;: &#39;Flight&#39;, &#39;Travel_provider&#39;: &#39;Southern Cross Air&#39;}, {&#39;Arrival_date&#39;: &#39;Sun, 05 Nov 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;St. Petersburg&#39;, &#39;Cost&#39;: 100.0, &#39;Departure_location&#39;: &#39;Moscow&#39;, &#39;Travel_ID&#39;: 6, &#39;Travel_method&#39;: &#39;Train&#39;, &#39;Travel_provider&#39;: &#39;Trans-Siberian Rail&#39;}, {&#39;Arrival_date&#39;: &#39;Sun, 10 Dec 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;Montreal&#39;, &#39;Cost&#39;: 80.0, &#39;Departure_location&#39;: &#39;Toronto&#39;, &#39;Travel_ID&#39;: 7, &#39;Travel_method&#39;: &#39;Bus&#39;, &#39;Travel_provider&#39;: &#39;Maple Line&#39;}, {&#39;Arrival_date&#39;: &#39;Mon, 15 Jan 2024 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;Madagascar&#39;, &#39;Cost&#39;: 700.0, &#39;Departure_location&#39;: &#39;Cape Town&#39;, &#39;Travel_ID&#39;: 8, &#39;Travel_method&#39;: &#39;Cruise&#39;, &#39;Travel_provider&#39;: &#39;African Sea Adventures&#39;}, {&#39;Arrival_date&#39;: &#39;Mon, 05 Feb 2024 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;Paris&#39;, &#39;Cost&#39;: 950.0, &#39;Departure_location&#39;: &#39;Dubai&#39;, &#39;Travel_ID&#39;: 9, &#39;Travel_method&#39;: &#39;Flight&#39;, &#39;Travel_provider&#39;: &#39;Gulf Wings&#39;}, {&#39;Arrival_date&#39;: &#39;Sun, 10 Mar 2024 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;Shanghai&#39;, &#39;Cost&#39;: 130.0, &#39;Departure_location&#39;: &#39;Beijing&#39;, &#39;Travel_ID&#39;: 10, &#39;Travel_method&#39;: &#39;Train&#39;, &#39;Travel_provider&#39;: &#39;Dragon Express&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -5823,7 +5829,8 @@ Transaction{
 <div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Agency/1&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Agency_ID&#39;: 1, &#39;Agency_location&#39;: &#39;123 Adventure Lane, Seattle&#39;, &#39;Agency_name&#39;: &#39;Global Adventures&#39;, &#39;Contact_info&#39;: &#39;contact@globaladventures.com&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -5877,7 +5884,8 @@ Transaction{
 <div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Destination/10&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Average_cost&#39;: 500.0, &#39;City&#39;: &#39;Cairo&#39;, &#39;Country&#39;: &#39;Egypt&#39;, &#39;Destination_ID&#39;: 10, &#39;Destination_description&#39;: &#39;Ancient Egyptian pyramids&#39;, &#39;Destination_name&#39;: &#39;Pyramids of Giza&#39;, &#39;Popular_attractions&#39;: &#39;History Tours, Photography&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -5927,7 +5935,8 @@ Transaction{
 <div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Review/3&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Rating&#39;: 3, &#39;Review_ID&#39;: 3, &#39;Review_Text&#39;: &#39;Beautiful beaches, but hotel service could improve&#39;, &#39;Travel_ID&#39;: 3, &#39;Traveler_ID&#39;: 103}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -5981,7 +5990,8 @@ Transaction{
 <div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Agent/5&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Agent_ID&#39;: 5, &#39;Agent_email&#39;: &#39;sarahdavis@email.com&#39;, &#39;Agent_first_name&#39;: &#39;Sarah&#39;, &#39;Agent_last_name&#39;: &#39;Davis&#39;, &#39;Agent_phone&#39;: &#39;123-456-7894&#39;, &#39;Experience_years&#39;: 7.0, &#39;Specialization&#39;: &#39;Luxury&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -6031,7 +6041,8 @@ Transaction{
 <div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Transaction/9&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Amount&#39;: 680.0, &#39;Payment_Method&#39;: &#39;Debit Card&#39;, &#39;Payment_Status&#39;: &#39;Paid&#39;, &#39;Transaction_ID&#39;: 9, &#39;Traveler_ID&#39;: 109}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -6105,7 +6116,8 @@ Transaction{
 <div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Hotel/101,103,105,107&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Cost_Per_Night&#39;: 100.0, &#39;Destination&#39;: &#39;Himalayas&#39;, &#39;Hotel_ID&#39;: 101, &#39;Hotel_Name&#39;: &#39;Mountain View Lodge&#39;, &#39;Rating&#39;: 4.5}, {&#39;Cost_Per_Night&#39;: 120.0, &#39;Destination&#39;: &#39;Bali, Indonesia&#39;, &#39;Hotel_ID&#39;: 103, &#39;Hotel_Name&#39;: &#39;Bali Beach Resort&#39;, &#39;Rating&#39;: 3.9}, {&#39;Cost_Per_Night&#39;: 180.0, &#39;Destination&#39;: &#39;Serengeti, Africa&#39;, &#39;Hotel_ID&#39;: 105, &#39;Hotel_Name&#39;: &#39;Safari Camp Retreat&#39;, &#39;Rating&#39;: 4.7}, {&#39;Cost_Per_Night&#39;: 300.0, &#39;Destination&#39;: &#39;Maldives&#39;, &#39;Hotel_ID&#39;: 107, &#39;Hotel_Name&#39;: &#39;Maldives Paradise&#39;, &#39;Rating&#39;: 4.9}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -6189,7 +6201,8 @@ Transaction{
 <div class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Destination/2,4,6,8&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Average_cost&#39;: 600.0, &#39;City&#39;: &#39;Paris&#39;, &#39;Country&#39;: &#39;France&#39;, &#39;Destination_ID&#39;: 2, &#39;Destination_description&#39;: &#39;Iconic French landmark&#39;, &#39;Destination_name&#39;: &#39;Eiffel Tower&#39;, &#39;Popular_attractions&#39;: &#39;Sightseeing, Dining&#39;}, {&#39;Average_cost&#39;: 400.0, &#39;City&#39;: &#39;Agra&#39;, &#39;Country&#39;: &#39;India&#39;, &#39;Destination_ID&#39;: 4, &#39;Destination_description&#39;: &#39;A symbol of love&#39;, &#39;Destination_name&#39;: &#39;Taj Mahal&#39;, &#39;Popular_attractions&#39;: &#39;Sightseeing, Photography&#39;}, {&#39;Average_cost&#39;: 450.0, &#39;City&#39;: &#39;Beijing&#39;, &#39;Country&#39;: &#39;China&#39;, &#39;Destination_ID&#39;: 6, &#39;Destination_description&#39;: &#39;Historic fortification&#39;, &#39;Destination_name&#39;: &#39;Great Wall of China&#39;, &#39;Popular_attractions&#39;: &#39;Hiking, History Tours&#39;}, {&#39;Average_cost&#39;: 600.0, &#39;City&#39;: &#39;Venice&#39;, &#39;Country&#39;: &#39;Italy&#39;, &#39;Destination_ID&#39;: 8, &#39;Destination_description&#39;: &#39;Famous waterways and architecture&#39;, &#39;Destination_name&#39;: &#39;Venice Canals&#39;, &#39;Popular_attractions&#39;: &#39;Boating, Sightseeing&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -6271,7 +6284,8 @@ Transaction{
 <div class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Review/4,2,3,6,1&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Rating&#39;: 4, &#39;Review_ID&#39;: 1, &#39;Review_Text&#39;: &#39;Enjoyed the trek, stunning views!&#39;, &#39;Travel_ID&#39;: 1, &#39;Traveler_ID&#39;: 101}, {&#39;Rating&#39;: 5, &#39;Review_ID&#39;: 2, &#39;Review_Text&#39;: &#39;Fascinating history, excellent tour guide!&#39;, &#39;Travel_ID&#39;: 2, &#39;Traveler_ID&#39;: 102}, {&#39;Rating&#39;: 3, &#39;Review_ID&#39;: 3, &#39;Review_Text&#39;: &#39;Beautiful beaches, but hotel service could improve&#39;, &#39;Travel_ID&#39;: 3, &#39;Traveler_ID&#39;: 103}, {&#39;Rating&#39;: 4, &#39;Review_ID&#39;: 4, &#39;Review_Text&#39;: &#39;Loved exploring the city, great food recommendations&#39;, &#39;Travel_ID&#39;: 4, &#39;Traveler_ID&#39;: 104}, {&#39;Rating&#39;: 4, &#39;Review_ID&#39;: 6, &#39;Review_Text&#39;: &#39;Serene mountain retreat, cozy accommodations&#39;, &#39;Travel_ID&#39;: 6, &#39;Traveler_ID&#39;: 106}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -6355,7 +6369,8 @@ Transaction{
 <div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Travel/5,2,3,6,9&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Arrival_date&#39;: &#39;Wed, 05 Jul 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;Berlin&#39;, &#39;Cost&#39;: 150.0, &#39;Departure_location&#39;: &#39;Paris&#39;, &#39;Travel_ID&#39;: 2, &#39;Travel_method&#39;: &#39;Train&#39;, &#39;Travel_provider&#39;: &#39;EuroRail&#39;}, {&#39;Arrival_date&#39;: &#39;Tue, 15 Aug 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;San Francisco&#39;, &#39;Cost&#39;: 50.0, &#39;Departure_location&#39;: &#39;Los Angeles&#39;, &#39;Travel_ID&#39;: 3, &#39;Travel_method&#39;: &#39;Bus&#39;, &#39;Travel_provider&#39;: &#39;Pacific Coaches&#39;}, {&#39;Arrival_date&#39;: &#39;Fri, 20 Oct 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;Tokyo&#39;, &#39;Cost&#39;: 1200.0, &#39;Departure_location&#39;: &#39;Sydney&#39;, &#39;Travel_ID&#39;: 5, &#39;Travel_method&#39;: &#39;Flight&#39;, &#39;Travel_provider&#39;: &#39;Southern Cross Air&#39;}, {&#39;Arrival_date&#39;: &#39;Sun, 05 Nov 2023 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;St. Petersburg&#39;, &#39;Cost&#39;: 100.0, &#39;Departure_location&#39;: &#39;Moscow&#39;, &#39;Travel_ID&#39;: 6, &#39;Travel_method&#39;: &#39;Train&#39;, &#39;Travel_provider&#39;: &#39;Trans-Siberian Rail&#39;}, {&#39;Arrival_date&#39;: &#39;Mon, 05 Feb 2024 00:00:00 GMT&#39;, &#39;Arrival_location&#39;: &#39;Paris&#39;, &#39;Cost&#39;: 950.0, &#39;Departure_location&#39;: &#39;Dubai&#39;, &#39;Travel_ID&#39;: 9, &#39;Travel_method&#39;: &#39;Flight&#39;, &#39;Travel_provider&#39;: &#39;Gulf Wings&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -6403,7 +6418,8 @@ Transaction{
 <div class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Agency/?Agency_name=Safari Quest&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Agency_ID&#39;: 10, &#39;Agency_location&#39;: &#39;1717 Safari Ln, Nairobi&#39;, &#39;Agency_name&#39;: &#39;Safari Quest&#39;, &#39;Contact_info&#39;: &#39;service@safariquest.com&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -6469,7 +6485,8 @@ Transaction{
 <div class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Package/?Duration=7&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Duration&#39;: 7, &#39;Package_ID&#39;: 1, &#39;Package_description&#39;: &#39;A thrilling adventure package for adrenaline seekers&#39;, &#39;Package_name&#39;: &#39;Adventure Seeker&#39;, &#39;Total_cost&#39;: 1500.0}, {&#39;Duration&#39;: 7, &#39;Package_ID&#39;: 5, &#39;Package_description&#39;: &#39;A luxurious and pampering retreat for ultimate relaxation&#39;, &#39;Package_name&#39;: &#39;Luxury Getaway&#39;, &#39;Total_cost&#39;: 2500.0}, {&#39;Duration&#39;: 7, &#39;Package_ID&#39;: 8, &#39;Package_description&#39;: &#39;A challenging and rewarding mountain trekking experience&#39;, &#39;Package_name&#39;: &#39;Mountain Trek&#39;, &#39;Total_cost&#39;: 1600.0}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -6517,7 +6534,8 @@ Transaction{
 <div class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Trip/?Booking_date=2023-01-01&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Booking_date&#39;: &#39;Sun, 01 Jan 2023 00:00:00 GMT&#39;, &#39;Trip_ID&#39;: 1, &#39;Trip_end_date&#39;: &#39;Tue, 20 Jun 2023 00:00:00 GMT&#39;, &#39;Trip_start_date&#39;: &#39;Sat, 10 Jun 2023 00:00:00 GMT&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -6573,7 +6591,8 @@ Transaction{
 <div class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Traveler/?Traveler_ID=3&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Budget&#39;: 3500.0, &#39;Date_of_birth&#39;: &#39;Thu, 02 Nov 1978 00:00:00 GMT&#39;, &#39;Traveler_ID&#39;: 3, &#39;Traveler_address&#39;: &#39;3030 Birch Ln, Sydney&#39;, &#39;Traveler_email&#39;: &#39;clara@email.com&#39;, &#39;Traveler_first_name&#39;: &#39;Clara&#39;, &#39;Traveler_last_name&#39;: &#39;Lee&#39;, &#39;Traveler_phone&#39;: &#39;234-567-8903&#39;}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
@@ -6631,7 +6650,8 @@ Transaction{
 <div class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>api_call(<span class="st">&quot;/Transaction/?Payment_Status=Pending&amp;Payment_Method=Bank Transfer&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tables: [{&#39;Amount&#39;: 450.0, &#39;Payment_Method&#39;: &#39;Bank Transfer&#39;, &#39;Payment_Status&#39;: &#39;Pending&#39;, &#39;Transaction_ID&#39;: 3, &#39;Traveler_ID&#39;: 103}, {&#39;Amount&#39;: 400.0, &#39;Payment_Method&#39;: &#39;Bank Transfer&#39;, &#39;Payment_Status&#39;: &#39;Pending&#39;, &#39;Transaction_ID&#39;: 8, &#39;Traveler_ID&#39;: 108}]</code></pre>
+<pre><code>Failed to retrieve tables. Status code: 403
+Response: </code></pre>
 </div>
 </div>
 </section>
